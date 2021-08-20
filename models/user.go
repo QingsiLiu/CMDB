@@ -33,3 +33,8 @@ func GetUserByName(name string) *User {
 func (u *User) ValidPassWord(password string) bool {
 	return u.Password == utils.Md5Text(password)
 }
+
+// QueryUser 查询用户
+func QueryUser() []*User {
+	return nil
+}
