@@ -12,7 +12,10 @@ type UserController struct {
 
 // Query 查询用户
 func (u *UserController) Query() {
-	users := models.QueryUser("")
+	q := u.GetString("q")
+
+	users := models.QueryUser(q)
 	u.Data["users"] = users
+	u.Data["q"] = q
 	u.TplName = "user/query.html"
 }

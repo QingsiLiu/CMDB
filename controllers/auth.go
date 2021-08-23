@@ -28,7 +28,7 @@ func (a *AuthController) Login() {
 				errs.AddError("default", "用户名或密码错误")
 			} else if user.ValidPassWord(form.Password) {
 				//用户密码正确
-				a.Redirect("/home/index", http.StatusFound)
+				a.Redirect(beego.URLFor("UserController.Query"), http.StatusFound)
 			} else {
 				//用户密码不正确
 				errs.AddError("default", "用户名或密码错误")
