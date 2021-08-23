@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>用户管理</title>
+    </head>
+    <body>
+        <table>
+            <thead>
+                <tr>
+                    <th>工号</th>
+                    <th>用户名</th>
+                    <th>姓名</th>
+                    <th>性别</th>
+                    <th>联系方式</th>
+                    <th>邮箱</th>
+                    <th>联系地址</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{ range .users }}
+                    <tr>
+                        <td>{{ .ID }}</td>
+                        <td>{{ .Name }}</td>
+                        <td>{{ .Nickname }}</td>
+                        <td>{{ .Gender }}</td>
+                        <td>{{ .Tel }}</td>
+                        <td>{{ .Email }}</td>
+                        <td>{{ .Addr }}</td>
+                        <td>{{ .Status }}</td>
+                        <td>
+                            编辑
+                            删除
+                        </td>
+                    </tr>
+                {{ end }}
+            </tbody>
+        </table>
+    </body>
+</html>

@@ -1,9 +1,12 @@
 package models
 
-import "magego/course-33/cmdb/utils"
+import (
+	"magego/course-33/cmdb/utils"
+)
 
 const (
 	sqlQueryByName = "select id, name, password from user where name=?"
+	sqlQuery       = "select id, name from user"
 )
 
 type User struct {
@@ -35,6 +38,17 @@ func (u *User) ValidPassWord(password string) bool {
 }
 
 // QueryUser 查询用户
-func QueryUser() []*User {
-	return nil
+func QueryUser(q string) []*User {
+	users := make([]*User, 0, 10)
+	rows, err := db.Query(sqlQuery)
+	if err != nil {
+		return nil
+	}
+	for rows.Next() {
+		user := &User{}
+		if err := rows.Scan(&user.ID, &user.Name); err == nil {
+			users = append(users, user)
+		}
+	}
+	return users
 }

@@ -7,5 +7,5 @@ type HomeController struct {
 }
 
 func (c *HomeController) Index() {
-	c.TplName = "/home/index.html"
+	c.TplName = "home/index.html"
 }
