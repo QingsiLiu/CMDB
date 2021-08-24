@@ -7,7 +7,7 @@ import (
 	"net/http"
 )
 
-// 用户管理控制器
+// UserController 用户管理控制器
 type UserController struct {
 	base.BaseController
 }

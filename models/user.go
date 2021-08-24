@@ -39,7 +39,7 @@ func GetUserByName(name string) *User {
 
 // ValidPassWord 验证用户密码是否正确
 func (u *User) ValidPassWord(password string) bool {
-	return u.Password == utils.Md5Text(password)
+	return utils.CheckPassword(password, u.Password)
 }
 
 // QueryUser 查询用户

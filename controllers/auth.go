@@ -9,12 +9,12 @@ import (
 	"net/http"
 )
 
-//负责认证的认证控制器
+// AuthController 负责认证的认证控制器
 type AuthController struct {
 	base.BaseController
 }
 
-//认证登录
+// Login 认证登录
 func (a *AuthController) Login() {
 
 	SessionKey := beego.AppConfig.DefaultString("auth::SessionKey", "user")
