@@ -1,11 +1,14 @@
 package controllers
 
-import "github.com/astaxie/beego"
+import (
+	"magego/course-33/cmdb/base/controllers/auth"
+)
 
 type HomeController struct {
-	beego.Controller
+	auth.AuthorizationController
 }
 
-func (c *HomeController) Index() {
-	c.TplName = "home/index.html"
+func (h *HomeController) Index() {
+
+	h.TplName = "home/index.html"
 }

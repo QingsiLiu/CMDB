@@ -1,4 +1,4 @@
-package base
+package errors
 
 type Errors struct {
 	errors map[string][]string
