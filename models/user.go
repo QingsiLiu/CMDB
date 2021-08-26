@@ -1,40 +1,46 @@
 package models
 
 import (
-	gosql "database/sql"
+	"github.com/astaxie/beego/orm"
 	"magego/course-33/CMDB/utils"
 	"time"
 )
 
-const (
+/*const (
 	sqlQueryByName = "select id, name, password from user where name=?"
 	sqlQuery       = "select id, staff_id, name, nickname, password, gender, tel, email, addr, department, status, created_at, updated_at, deleted_at from user"
-)
+)*/
 
 type User struct {
-	ID         int
-	StaffID    string
-	Name       string
-	Nickname   string
-	Password   string
-	Gender     int
-	Tel        string
-	Addr       string
-	Email      string
-	Department string
-	Status     int
-	CreateAt   *time.Time
-	UpdateAt   *time.Time
-	DeleteAt   *time.Time
+	ID         int        `orm:"column(id)"`
+	StaffID    string     `orm:"column(staff_id);size(32)"`
+	Name       string     `orm:"size(64)"`
+	Nickname   string     `orm:"size(64)"`
+	Password   string     `orm:"size(1024)"`
+	Gender     int        `orm:""`
+	Tel        string     `orm:"size(32)"`
+	Addr       string     `orm:"size(128)"`
+	Email      string     `orm:"size(64)"`
+	Department string     `orm:"size(128)"`
+	Status     int        `orm:""`
+	CreatedAt  *time.Time `orm:"auto_now_add"`
+	UpdatedAt  *time.Time `orm:"auto_now"`
+	DeletedAt  *time.Time `orm:"null"`
 }
 
 // GetUserByName 通过用户名获取用户
 func GetUserByName(name string) *User {
-	user := &User{}
-	if err := db.QueryRow(sqlQueryByName, name).Scan(&user.ID, &user.Name, &user.Password); err == nil {
+	user := &User{Name: name}
+	ormer := orm.NewOrm()
+	if err := ormer.Read(user, "Name"); err == nil {
 		return user
 	}
 	return nil
+	/*user := &User{}
+	if err := db.QueryRow(sqlQueryByName, name).Scan(&user.ID, &user.Name, &user.Password); err == nil {
+		return user
+	}
+	return nil*/
 }
 
 // ValidPassWord 验证用户密码是否正确
@@ -44,7 +50,20 @@ func (u *User) ValidPassWord(password string) bool {
 
 // QueryUser 查询用户
 func QueryUser(q string) []*User {
-	users := make([]*User, 0, 10)
+	var users []*User
+	queryset := orm.NewOrm().QueryTable(&User{})
+	if q != "" {
+		cond := orm.NewCondition()
+		cond = cond.Or("Name__icontains", q)
+		cond = cond.Or("Nickname__icontains", q)
+		cond = cond.Or("Tel__icontains", q)
+		cond = cond.Or("Addr__icontains", q)
+		cond = cond.Or("Email__icontains", q)
+		cond = cond.Or("Department__icontains", q)
+		queryset = queryset.SetCond(cond)
+	}
+	queryset.All(&users)
+	/*users := make([]*User, 0, 10)
 	sql := sqlQuery
 	var (
 		rows *gosql.Rows
@@ -69,7 +88,7 @@ func QueryUser(q string) []*User {
 			&user.UpdateAt, &user.DeleteAt); err == nil {
 			users = append(users, user)
 		}
-	}
+	}*/
 	return users
 }
 
@@ -93,4 +112,8 @@ func (u *User) StatusText() string {
 		return "离职"
 	}
 	return "未知"
+}
+
+func init() {
+	orm.RegisterModel(new(User))
 }
