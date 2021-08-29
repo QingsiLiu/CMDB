@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>CSS选择器</title>
+        <style type="text/css">
+            /* 标签选择器 */
+            div {
+                color: red;
+            }
+            /* id选择器 */
+            #div2 {
+                color: blue;
+            }
+            /* class选择器 */
+            .green {
+                color: green;
+            }
+            /* 复合选择器 */
+            div.green {
+                color: pink;
+            }
+            /* 子孙选择器 selector selector
+               子选择器 selector>selector
+               属性选择器 [] [key=value] [key!=value] [key~=value]
+            */
+            [yellow] {
+                color: yellow;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="green">DIV1</div>
+        <div id="div2">DIV2</div>
+        <div class="green">DIV3</div>
+        <span class="green">span1</span>
+        <span id="span2">span2</span>
+        <span class="green" yellow = "yellow">span3</span>
+    </body>
+</html>

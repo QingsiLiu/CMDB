@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>CSS定位</title>
+        <style type="text/css">
+            /* 定位：绝对定位 / 相对定位(相对于父元素) */
+            span.abs {
+                position: absolute;
+                top: 300px;
+                left: 300px;
+            }
+
+            span.rel {
+                position: relative;
+                top: 500px;
+                left: 500px;
+            }
+        </style>
+    </head>
+    <body>
+        <span>AAAAAAAAAAAA</span>
+        <span>BBBBBBBBBBBB</span>
+        <span>CCCCCCCCCCCC</span>
+        <span class="abs">DDDDDDDDDDDD</span>
+        <span>2AAAAAAAAAAAA</span>
+        <span>2BBBBBBBBBBBB</span>
+        <span>2CCCCCCCCCCCC</span>
+        <span>2DDDDDDDDDDDD</span>
+        <span>3AAAAAAAAAAAA</span>
+        <span>3BBBBBBBBBBBB</span>
+        <span>3CCCCCCCCCCCC</span>
+        <span class="rel">3DDDDDDDDDDDD</span>
+    </body>
+</html>

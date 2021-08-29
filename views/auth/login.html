@@ -3,15 +3,27 @@
     <head>
         <meta charset="UTF-8">
         <title>{{ config "String" "APPName" "CMDB"}}</title>
+        <style type="text/css">
+            /* 选择器
+               应用到所有div标签：标签选择器         tag
+               应用到某个ID标签：ID选择器            #id
+               应用到某个class的标签：class选择器   .class
+            */
+        div {
+            color: red;
+            }
+        </style>
     </head>
     <body>
         <form action="{{ urlfor `AuthController.Login` }}" method="post">
             <label>用户名:</label><input type="text" name="name" value="{{ .form.Name }}" /><br/>
             <label>密码：</label><input type="password" name="password" value="" /><br/>
             {{ if .errors.HasErrors }}
+                <div>
                 {{ range .errors.Errors }}
                     {{ index . 0 }}
                 {{ end }}
+                </div>
                 <br/>
             {{ end }}
             <input type="submit" value="登录"/>
