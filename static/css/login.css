@@ -1,0 +1,8 @@
+div.login {
+    margin-top: 250px;
+    /*background-color: gray;*/
+}
+body {
+    background-color: #f1f1f1;
+    /*background-image: url("/static/img/LoginBackground.webp");*/
+}

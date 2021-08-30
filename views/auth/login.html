@@ -3,30 +3,44 @@
     <head>
         <meta charset="UTF-8">
         <title>{{ config "String" "APPName" "CMDB"}}</title>
-        <style type="text/css">
-            /* 选择器
-               应用到所有div标签：标签选择器         tag
-               应用到某个ID标签：ID选择器            #id
-               应用到某个class的标签：class选择器   .class
-            */
-        div {
-            color: red;
-            }
-        </style>
+        {{ assets_css "/static/component/bootstrap-4.6.0/css/bootstrap.min.css" }}
+        {{ assets_css "/static/css/login.css" }}
     </head>
     <body>
-        <form action="{{ urlfor `AuthController.Login` }}" method="post">
-            <label>用户名:</label><input type="text" name="name" value="{{ .form.Name }}" /><br/>
-            <label>密码：</label><input type="password" name="password" value="" /><br/>
-            {{ if .errors.HasErrors }}
-                <div>
-                {{ range .errors.Errors }}
-                    {{ index . 0 }}
-                {{ end }}
+        <div class="container">
+            <div class="row">
+                <div class="offset-4 col-4">
+                    <div class="login shadow-lg p-3 mb-5 rounded">
+                        <form action="{{ urlfor `AuthController.Login` }}" method="post">
+                            <h1 class="text-center">用户登录</h1>
+                            <div class="form-group row">
+                                <label class="col-form-label sr-only">用户名:</label>
+                                <div class="col-12">
+                                    <input type="text" class="form-control" placeholder="请输入用户名" name="name" value="{{ .form.Name }}" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-form-label sr-only">密码：</label>
+                                <div class="col-12">
+                                    <input type="password" class="form-control" placeholder="请输入密码" name="password" value="" />
+                                </div>
+                            </div>
+                            {{ if .errors.HasErrors }}
+                            <div class="form-group row">
+                                {{ range .errors.Errors }}
+                                    <div class="col-9 offset-3 text-danger">{{ index . 0 }}</div>
+                                {{ end }}
+                            </div>
+                            {{ end }}
+                            <div class="form-group row">
+                                <div class="col-12">
+                                    <input type="submit" class="btn btn-primary btn-block" value="登录"/>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <br/>
-            {{ end }}
-            <input type="submit" value="登录"/>
-        </form>
+            </div>
+        </div>
     </body>
 </html>
