@@ -116,4 +116,7 @@ ORM（关系映射模型）
 告警管理
 统计图表
 
+Data[nav] = home
+Data[nav] = user
+
 

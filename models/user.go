@@ -2,14 +2,9 @@ package models
 
 import (
 	"github.com/astaxie/beego/orm"
-	"magego/course-33/CMDB/utils"
+	"magego/course-33/cmdb/utils"
 	"time"
 )
-
-/*const (
-	sqlQueryByName = "select id, name, password from user where name=?"
-	sqlQuery       = "select id, staff_id, name, nickname, password, gender, tel, email, addr, department, status, created_at, updated_at, deleted_at from user"
-)*/
 
 type User struct {
 	ID         int        `orm:"column(id)"`
@@ -40,11 +35,6 @@ func GetUserByName(name string) *User {
 		return user
 	}
 	return nil
-	/*user := &User{}
-	if err := db.QueryRow(sqlQueryByName, name).Scan(&user.ID, &user.Name, &user.Password); err == nil {
-		return user
-	}
-	return nil*/
 }
 
 // GetUserByID 通过ID获取用户
@@ -77,32 +67,6 @@ func QueryUser(q string) []*User {
 		queryset = queryset.SetCond(cond)
 	}
 	queryset.All(&users)
-	/*users := make([]*User, 0, 10)
-	sql := sqlQuery
-	var (
-		rows *gosql.Rows
-		err  error
-	)
-	var params []interface{}
-	q = utils.Like(q)
-	if q != "" {
-		sql += " WHERE staff_id like ? ESCAPE '/' OR name like ? ESCAPE '/' OR nickname like ? ESCAPE '/' OR tel like ? ESCAPE '/' OR email like ? ESCAPE '/' OR addr like ? ESCAPE '/' OR department like ? ESCAPE '/'"
-		params = append(params, q, q, q, q, q, q, q)
-	}
-
-	rows, err = db.Query(sql, params...)
-	if err != nil {
-		return users
-	}
-
-	for rows.Next() {
-		user := &User{}
-		if err := rows.Scan(&user.ID, &user.StaffID, &user.Name, &user.Nickname, &user.Password, &user.Gender,
-			&user.Tel, &user.Email, &user.Addr, &user.Department, &user.Status, &user.CreateAt,
-			&user.UpdateAt, &user.DeleteAt); err == nil {
-			users = append(users, user)
-		}
-	}*/
 	return users
 }
 
