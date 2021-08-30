@@ -28,6 +28,10 @@ type User struct {
 	DeletedAt  *time.Time `orm:"null"`
 }
 
+func init() {
+	orm.RegisterModel(new(User))
+}
+
 // GetUserByName 通过用户名获取用户
 func GetUserByName(name string) *User {
 	user := &User{Name: name}
@@ -41,6 +45,16 @@ func GetUserByName(name string) *User {
 		return user
 	}
 	return nil*/
+}
+
+// GetUserByID 通过ID获取用户
+func GetUserByID(id int) *User {
+	user := &User{ID: id}
+	ormer := orm.NewOrm()
+	if err := ormer.Read(user, "id"); err == nil {
+		return user
+	}
+	return nil
 }
 
 // ValidPassWord 验证用户密码是否正确
@@ -112,8 +126,4 @@ func (u *User) StatusText() string {
 		return "离职"
 	}
 	return "未知"
-}
-
-func init() {
-	orm.RegisterModel(new(User))
 }

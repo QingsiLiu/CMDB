@@ -20,4 +20,7 @@ func (a *AuthorizationController) Prepare() {
 	if SessionUser == nil {
 		a.Redirect(beego.URLFor(LoginController), http.StatusFound)
 	}
+	//查询用户信息 => Data
+	//根据ID获取用户数据
+
 }

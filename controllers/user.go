@@ -2,14 +2,14 @@ package controllers
 
 import (
 	"github.com/astaxie/beego"
-	"magego/course-33/cmdb/base/controllers/base"
+	"magego/course-33/cmdb/base/controllers/auth"
 	"magego/course-33/cmdb/models"
 	"net/http"
 )
 
 // UserController 用户管理控制器
 type UserController struct {
-	base.BaseController
+	auth.AuthorizationController
 }
 
 // Query 查询用户
