@@ -9,10 +9,12 @@
     <body>
     {{ template "/base/templates/nav.html" . }}
         <div class="container-fluid m-2">
+
             <div class="row">
                 <div class="col-1">
-                    <a href="" class="btn btn-primary">新建</a>
+                    <a href="{{ urlfor `UserController.New` }}" class="btn btn-primary">新建</a>
                 </div>
+
                 <div class="col-11">
                     <form class="form-inline mb-2 float-right" action="{{ urlfor `UserController.Query` }}" method="GET">
                         <div class="form-group mr-2">
@@ -24,7 +26,9 @@
                         </div>
                     </form>
                 </div>
+
             </div>
+
             <div class="row">
                     <table class="table table- table-striped table-hover table-bordered">
                         <thead>
@@ -54,8 +58,10 @@
                                 <td>{{ .Addr }}</td>
                                 <td>{{ .StatusText }}</td>
                                 <td>
-                                    编辑
-                                    删除
+                                    <a href="{{ urlfor `UserController.Modify` }}?pk={{ .ID }}" class="btn btn-sm btn-info">编辑</a>
+                                    {{ if ne $.loginUser.ID .ID }}
+                                        <a href="{{ urlfor `UserController.Delete` }}?pk={{ .ID }}" class="btn btn-sm btn-danger">删除</a>
+                                    {{ end }}
                                 </td>
                             </tr>
                             {{ end }}

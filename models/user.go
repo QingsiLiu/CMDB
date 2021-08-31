@@ -2,6 +2,7 @@ package models
 
 import (
 	"github.com/astaxie/beego/orm"
+	"magego/course-33/cmdb/forms"
 	"magego/course-33/cmdb/utils"
 	"time"
 )
@@ -56,18 +57,66 @@ func (u *User) ValidPassWord(password string) bool {
 func QueryUser(q string) []*User {
 	var users []*User
 	queryset := orm.NewOrm().QueryTable(&User{})
+	cond1 := orm.NewCondition()
+	cond := orm.NewCondition()
 	if q != "" {
-		cond := orm.NewCondition()
-		cond = cond.Or("Name__icontains", q)
-		cond = cond.Or("Nickname__icontains", q)
-		cond = cond.Or("Tel__icontains", q)
-		cond = cond.Or("Addr__icontains", q)
-		cond = cond.Or("Email__icontains", q)
-		cond = cond.Or("Department__icontains", q)
-		queryset = queryset.SetCond(cond)
+		cond1 = cond1.Or("Name__icontains", q)
+		cond1 = cond1.Or("Nickname__icontains", q)
+		cond1 = cond1.Or("Tel__icontains", q)
+		cond1 = cond1.Or("Addr__icontains", q)
+		cond1 = cond1.Or("Email__icontains", q)
+		cond1 = cond1.Or("Department__icontains", q)
 	}
+	cond = cond.And("DeletedAt__isnull", true)
+	cond = cond.AndCond(cond).AndCond(cond1)
+	queryset = queryset.SetCond(cond)
 	queryset.All(&users)
 	return users
+}
+
+// NewUser 新建用户信息
+func NewUser(form *forms.UserModifyForm) {
+	deleteAt := time.Now()
+	user := &User{StaffID: form.StaffId,
+		Name:       form.Name,
+		Nickname:   form.NickName,
+		Gender:     form.GenderInt(),
+		Department: form.Department,
+		Tel:        form.Tel,
+		Addr:       form.Addr,
+		Email:      form.Email,
+		Status:     form.StatusInt(),
+		DeletedAt:  &deleteAt}
+	ormer := orm.NewOrm()
+	ormer.Insert(user)
+}
+
+// ModifyUser 修改用户信息
+func ModifyUser(form *forms.UserModifyForm) {
+	if user := GetUserByID(form.ID); user != nil {
+		user.StaffID = form.StaffId
+		user.Nickname = form.NickName
+		user.Gender = form.GenderInt()
+		user.Tel = form.Tel
+		user.Email = form.Email
+		user.Addr = form.Addr
+		user.Department = form.Department
+		user.Status = form.StatusInt()
+		ormer := orm.NewOrm()
+		ormer.Update(user, "StaffID", "Nickname", "Gender", "Tel", "Email", "Addr", "Department", "Status")
+	}
+}
+
+// DeleteUser 删除用户信息
+func DeleteUser(form *forms.UserModifyForm) {
+	/*ormer := orm.NewOrm()
+	ormer.Delete(&User{ID: pk})*/
+	if user := GetUserByID(form.ID); user != nil {
+		deleteAt := time.Now()
+		user.DeletedAt = &deleteAt
+		ormer := orm.NewOrm()
+		ormer.Update(user, "DeletedAt")
+	}
 }
 
 func (u *User) GenderText() string {

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>用户编辑</title>
+        {{ assets_css "/static/component/bootstrap-4.6.0/css/bootstrap.min.css" }}
+        {{ assets_css "/static/css/layout.css" }}
+    </head>
+    <body>
+    {{ template "/base/templates/nav.html" . }}
+        <div class="container-fluid m-2">
+            <div class="row">
+                <div class="col-12 offset-2 mt-2">
+                    <form action="{{ urlfor `UserController.Modify` }}" method="post">
+
+                        <input type="hidden" name="id" value="{{ .form.ID }}" />
+
+                        <div class="form-group row">
+                            <label class="col-form-label col-1">工号</label>
+                            <div class="col-6">
+                                <input type="text" class="form-control" value="{{ .form.StaffId }}" name="staffId" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-form-label col-1">姓名</label>
+                            <div class="col-6">
+                                <input type="text" class="form-control" value="{{ .form.NickName }}" name="nickname" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-form-label col-1">性别</label>
+                            <div class="col-2">
+                                <select class="form-select-sm form-control" name="gender">
+                                    <option class="form-control" value="男">男</option>
+                                    <option class="form-control" value="女">女</option>
+                                    <option class="form-control" value="未知">未知</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-form-label col-1">状态</label>
+                            <div class="col-2">
+                                <select class="form-select-sm form-control" name="status">
+                                    <option class="form-control" value="正常">正常</option>
+                                    <option class="form-control" value="锁定">锁定</option>
+                                    <option class="form-control" value="离职">离职</option>
+                                    <option class="form-control" value="未知">未知</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-form-label col-1">部门</label>
+                            <div class="col-6">
+                                <input type="text" class="form-control" value="{{ .form.Department }}" name="department" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-form-label col-1">联系方式</label>
+                            <div class="col-6">
+                                <input type="text" class="form-control" value="{{ .form.Tel }}" name="tel" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-form-label col-1">邮箱</label>
+                            <div class="col-6">
+                                <input type="text" class="form-control" value="{{ .form.Email }}" name="email" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-form-label col-1">联系地址</label>
+                            <div class="col-6">
+                                <input type="text" class="form-control" value="{{ .form.Addr }}" name="addr" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-6 offset-2">
+                                <input type="submit" class="btn btn-info" value="提交" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        window.onload = function () {
+            var gender = '';  // 传入后台取到的gender
+            var status = '';  // 传入后台取到的status
+            var stas = document.querySelectorAll('select[name="gender"]>option');
+            for(var i = 0; i < eles.length; i++) {
+                if (eles[i].getAttribute('value') === gender) {
+                    eles[i].setAttribute('selected', 'selected')
+                }
+            }
+            var stas = document.querySelectorAll('select[name="status"]>option');
+            for(var j = 0; j < eles.length; j++) {
+                if (eles[j].getAttribute('value') === status) {
+                    eles[j].setAttribute('selected', 'selected')
+                }
+            }
+        }
+    </script>
+</html>

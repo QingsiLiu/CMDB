@@ -24,7 +24,7 @@ func (a *AuthorizationController) Prepare() {
 	//配置文件读取
 	SessionKey := beego.AppConfig.DefaultString("auth::SessionKey", "user")
 	SessionUser := a.GetSession(SessionKey)
-	a.Data["LoginUser"] = nil
+	a.Data["loginUser"] = nil
 	a.Data["nav"] = a.getNav()
 
 	if SessionUser != nil {
