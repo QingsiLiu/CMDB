@@ -6,6 +6,7 @@ type UserModifyForm struct {
 	StaffId    string `form:"staffId"`
 	Name       string `form:"name"`
 	NickName   string `form:"nickname"`
+	Password   string `form:"password"`
 	Gender     string `form:"gender"`
 	Tel        string `form:"tel"`
 	Email      string `form:"email"`

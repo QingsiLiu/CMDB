@@ -76,11 +76,8 @@ func (u *UserController) Modify() {
 
 // Delete 删除用户
 func (u *UserController) Delete() {
-	form := &forms.UserModifyForm{}
-	if err := u.ParseForm(form); err == nil {
-		if pk, err := u.GetInt("pk"); err == nil && u.LoginUser.ID != pk {
-			models.DeleteUser(form)
-		}
+	if pk, err := u.GetInt("pk"); err == nil && u.LoginUser.ID != pk {
+		models.DeleteUser(pk)
 	}
 
 	u.Redirect(beego.URLFor("UserController.Query"), http.StatusFound)

@@ -57,18 +57,20 @@ func (u *User) ValidPassWord(password string) bool {
 func QueryUser(q string) []*User {
 	var users []*User
 	queryset := orm.NewOrm().QueryTable(&User{})
-	cond1 := orm.NewCondition()
 	cond := orm.NewCondition()
+	cond = cond.And("DeletedAt__isnull", true)
+
 	if q != "" {
+		cond1 := orm.NewCondition()
 		cond1 = cond1.Or("Name__icontains", q)
 		cond1 = cond1.Or("Nickname__icontains", q)
 		cond1 = cond1.Or("Tel__icontains", q)
 		cond1 = cond1.Or("Addr__icontains", q)
 		cond1 = cond1.Or("Email__icontains", q)
 		cond1 = cond1.Or("Department__icontains", q)
+		cond = cond.AndCond(cond1)
 	}
-	cond = cond.And("DeletedAt__isnull", true)
-	cond = cond.AndCond(cond).AndCond(cond1)
+
 	queryset = queryset.SetCond(cond)
 	queryset.All(&users)
 	return users
@@ -76,7 +78,6 @@ func QueryUser(q string) []*User {
 
 // NewUser 新建用户信息
 func NewUser(form *forms.UserModifyForm) {
-	deleteAt := time.Now()
 	user := &User{StaffID: form.StaffId,
 		Name:       form.Name,
 		Nickname:   form.NickName,
@@ -85,8 +86,7 @@ func NewUser(form *forms.UserModifyForm) {
 		Tel:        form.Tel,
 		Addr:       form.Addr,
 		Email:      form.Email,
-		Status:     form.StatusInt(),
-		DeletedAt:  &deleteAt}
+		Status:     form.StatusInt()}
 	ormer := orm.NewOrm()
 	ormer.Insert(user)
 }
@@ -96,6 +96,7 @@ func ModifyUser(form *forms.UserModifyForm) {
 	if user := GetUserByID(form.ID); user != nil {
 		user.StaffID = form.StaffId
 		user.Nickname = form.NickName
+		user.Password = utils.GeneratePassword(form.Password)
 		user.Gender = form.GenderInt()
 		user.Tel = form.Tel
 		user.Email = form.Email
@@ -103,15 +104,15 @@ func ModifyUser(form *forms.UserModifyForm) {
 		user.Department = form.Department
 		user.Status = form.StatusInt()
 		ormer := orm.NewOrm()
-		ormer.Update(user, "StaffID", "Nickname", "Gender", "Tel", "Email", "Addr", "Department", "Status")
+		ormer.Update(user, "StaffID", "Nickname", "Password", "Gender", "Tel", "Email", "Addr", "Department", "Status")
 	}
 }
 
 // DeleteUser 删除用户信息
-func DeleteUser(form *forms.UserModifyForm) {
+func DeleteUser(pk int) {
 	/*ormer := orm.NewOrm()
 	ormer.Delete(&User{ID: pk})*/
-	if user := GetUserByID(form.ID); user != nil {
+	if user := GetUserByID(pk); user != nil {
 		deleteAt := time.Now()
 		user.DeletedAt = &deleteAt
 		ormer := orm.NewOrm()
