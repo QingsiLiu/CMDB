@@ -120,6 +120,15 @@ func DeleteUser(pk int) {
 	}
 }
 
+// ModifyUserPassword 修改用户密码
+func ModifyUserPassword(pk int, password string) {
+	if user := GetUserByID(pk); user != nil {
+		user.Password = utils.GeneratePassword(password)
+		ormer := orm.NewOrm()
+		ormer.Update(user, "Password")
+	}
+}
+
 func (u *User) GenderText() string {
 	if u.Gender == 0 {
 		return "女"

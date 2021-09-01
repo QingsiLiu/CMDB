@@ -1,5 +1,7 @@
 package errors
 
+import "github.com/astaxie/beego/validation"
+
 type Errors struct {
 	errors map[string][]string
 }
@@ -9,6 +11,17 @@ func (e *Errors) AddError(key, err string) {
 		e.errors[key] = make([]string, 0, 5)
 	}
 	e.errors[key] = append(e.errors[key], err)
+}
+
+// AddValidation
+func (e *Errors) AddValidation(valid *validation.Validation) {
+	if valid.HasErrors() {
+		for key, errs := range valid.ErrorsMap {
+			for _, err := range errs {
+				e.AddError(key, err.Message)
+			}
+		}
+	}
 }
 
 func (e *Errors) Errors() map[string][]string {

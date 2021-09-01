@@ -1,7 +1,6 @@
 package utils
 
 import (
-	"fmt"
 	"golang.org/x/crypto/bcrypt"
 )
 
@@ -16,7 +15,5 @@ func GeneratePassword(password string) string {
 
 // CheckPassword 检查密码正确性
 func CheckPassword(password, hash string) bool {
-	res, _ := bcrypt.GenerateFromPassword([]byte(password), 0)
-	fmt.Println(string(res))
 	return bcrypt.CompareHashAndPassword([]byte(hash), []byte(password)) == nil
 }
