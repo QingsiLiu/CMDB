@@ -4,6 +4,7 @@ import (
 	"github.com/astaxie/beego"
 	"magego/course-33/cmdb/base/controllers/base"
 	"magego/course-33/cmdb/models"
+	"magego/course-33/cmdb/services"
 	"net/http"
 	"strings"
 )
@@ -29,7 +30,7 @@ func (a *AuthorizationController) Prepare() {
 
 	if SessionUser != nil {
 		if id, ok := SessionUser.(int); ok {
-			if user := models.GetUserByID(id); user != nil {
+			if user := services.UserService.GetByID(id); user != nil {
 				a.Data["loginUser"] = user
 				a.LoginUser = user
 				return

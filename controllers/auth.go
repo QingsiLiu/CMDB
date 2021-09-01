@@ -5,7 +5,7 @@ import (
 	"magego/course-33/cmdb/base/controllers/base"
 	"magego/course-33/cmdb/base/errors"
 	"magego/course-33/cmdb/forms"
-	"magego/course-33/cmdb/models"
+	"magego/course-33/cmdb/services"
 	"net/http"
 )
 
@@ -33,7 +33,7 @@ func (a *AuthController) Login() {
 	if a.Ctx.Input.IsPost() {
 		//获取用户提交数据
 		if err := a.ParseForm(form); err == nil {
-			user := models.GetUserByName(form.Name)
+			user := services.UserService.GetByName(form.Name)
 			if user == nil {
 				//用户不存在
 				errs.AddError("default", "用户名或密码错误")

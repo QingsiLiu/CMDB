@@ -4,7 +4,7 @@ import (
 	"github.com/astaxie/beego"
 	"magego/course-33/cmdb/base/controllers/auth"
 	"magego/course-33/cmdb/forms"
-	"magego/course-33/cmdb/models"
+	"magego/course-33/cmdb/services"
 	"net/http"
 )
 
@@ -23,8 +23,7 @@ func (u *UserController) Query() {
 
 	q := u.GetString("q")
 
-	users := models.QueryUser(q)
-	u.Data["users"] = users
+	u.Data["users"] = services.UserService.Query(q)
 	u.Data["q"] = q
 	u.TplName = "user/query.html"
 }
@@ -35,7 +34,7 @@ func (u *UserController) New() {
 
 	if u.Ctx.Input.IsPost() {
 		if err := u.ParseForm(form); err == nil {
-			models.NewUser(form)
+			services.UserService.New(form)
 			u.Redirect(beego.URLFor("UserController.Query"), http.StatusFound)
 		}
 	}
@@ -51,12 +50,12 @@ func (u *UserController) Modify() {
 	if u.Ctx.Input.IsPost() {
 		if err := u.ParseForm(form); err == nil {
 			// 验证数据
-			models.ModifyUser(form)
+			services.UserService.Modify(form)
 			u.Redirect(beego.URLFor("UserController.Query"), http.StatusFound)
 		}
 
 	} else if pk, err := u.GetInt("pk"); err == nil {
-		if user := models.GetUserByID(pk); user != nil {
+		if user := services.UserService.GetByID(pk); user != nil {
 			form.ID = user.ID
 			form.StaffId = user.StaffID
 			form.NickName = user.Nickname
@@ -77,7 +76,7 @@ func (u *UserController) Modify() {
 // Delete 删除用户
 func (u *UserController) Delete() {
 	if pk, err := u.GetInt("pk"); err == nil && u.LoginUser.ID != pk {
-		models.DeleteUser(pk)
+		services.UserService.Delete(pk)
 	}
 
 	u.Redirect(beego.URLFor("UserController.Query"), http.StatusFound)
