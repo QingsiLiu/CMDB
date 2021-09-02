@@ -13,7 +13,7 @@ func (e *Errors) AddError(key, err string) {
 	e.errors[key] = append(e.errors[key], err)
 }
 
-// AddValidation
+// AddValidation 密码验证不正确的错误提示
 func (e *Errors) AddValidation(valid *validation.Validation) {
 	if valid.HasErrors() {
 		for key, errs := range valid.ErrorsMap {
