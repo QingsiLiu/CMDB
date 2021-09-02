@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"fmt"
 	"github.com/astaxie/beego"
 	"magego/course-33/cmdb/base/controllers/auth"
 	"magego/course-33/cmdb/forms"
@@ -15,12 +16,8 @@ type UserController struct {
 
 // Query 查询用户
 func (u *UserController) Query() {
-	sessionUser := u.GetSession("user")
-	if sessionUser == nil {
-		u.Redirect(beego.URLFor("AuthController.Login"), http.StatusFound)
-		return
-	}
-
+	flash := beego.ReadFromRequest(&u.Controller)
+	fmt.Println(flash.Data)
 	q := u.GetString("q")
 
 	u.Data["users"] = services.UserService.Query(q)
@@ -51,6 +48,12 @@ func (u *UserController) Modify() {
 		if err := u.ParseForm(form); err == nil {
 			// 验证数据
 			services.UserService.Modify(form)
+
+			// 存储消息
+			flash := beego.NewFlash()
+			flash.Set("notice", "修改用户信息成功")
+			flash.Store(&u.Controller)
+
 			u.Redirect(beego.URLFor("UserController.Query"), http.StatusFound)
 		}
 

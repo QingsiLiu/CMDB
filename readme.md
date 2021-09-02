@@ -121,4 +121,13 @@ ORM（关系映射模型）
     Get id => 查找数据 => 页面渲染
    b.提交
     Post id/xxx => 更新数据 => （成功）跳转到列表页面/（失败）提示
+   
+Flash:处理成功后将消息存储 cookie；如果想要显示时从存储中获取消息并显示 从cookie中读取/删除
+      页面使用后端模板：从当前Controller某个URL跳转到另一个URL
+      存储: flash := beego.Newflash   
+            flash.Set(key, value)
+            flash.Store(&Controller)
+      获取：   beego.ReadFromRequest(&c.Controller)
+              flash.Data
+              c.Data[key] = value
 

@@ -9,7 +9,15 @@
     <body>
     {{ template "/base/templates/nav.html" . }}
         <div class="container-fluid m-2">
-
+            {{ if .flash.notice }}
+            <div class="row">
+                <div class="col-4 offset-4">
+                    <div class="alert alert-primary" role="alert">
+                        {{ .flash.notice }}
+                    </div>
+                </div>
+            </div>
+            {{ end }}
             <div class="row">
                 <div class="col-1">
                     <a href="{{ urlfor `UserController.New` }}" class="btn btn-primary">新建</a>
