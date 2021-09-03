@@ -36,11 +36,18 @@ func (u *UserController) New() {
 		}
 	}
 	//u.Data["form"] = form
+	u.Data["xsrf_token"] = u.XSRFToken()
 	u.TplName = "user/new.html"
 }
 
 // Modify 修改用户
 func (u *UserController) Modify() {
+	// 假设当前用户不能修改其他人的信息
+	/*if 1==1{
+		u.Abort("NotPermission")
+		return
+	}*/
+
 	form := &forms.UserModifyForm{}
 
 	// Get获取数据，Post修改用户提交数据
@@ -73,6 +80,7 @@ func (u *UserController) Modify() {
 	}
 
 	u.Data["form"] = form
+	u.Data["xsrf_token"] = u.XSRFToken()
 	u.TplName = "user/modify.html"
 }
 

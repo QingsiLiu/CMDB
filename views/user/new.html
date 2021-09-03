@@ -12,6 +12,7 @@
         <div class="row">
             <div class="col-12 offset-2 mt-2">
                 <form action="{{ urlfor `UserController.New` }}" method="post">
+                    <input type="hidden" name="_xsrf" value="{{ .xsrf_token}}" />
 
                     <div class="form-group row">
                         <label class="col-form-label col-1">工号</label>

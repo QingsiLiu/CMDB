@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"github.com/astaxie/beego/validation"
+	"html/template"
 	"magego/course-33/cmdb/base/controllers/auth"
 	"magego/course-33/cmdb/base/errors"
 	"magego/course-33/cmdb/forms"
@@ -58,4 +59,5 @@ func (p *PasswordController) Modify() {
 	p.TplName = "password/modify.html"
 	p.Data["errors"] = errs
 	p.Data["text"] = text
+	p.Data["xsrf_input"] = template.HTML(p.XSRFFormHTML())
 }

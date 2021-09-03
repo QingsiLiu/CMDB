@@ -12,6 +12,7 @@
                 <div class="offset-4 col-4">
                     <div class="login shadow-lg p-3 mb-5 rounded">
                         <form action="{{ urlfor `AuthController.Login` }}" method="post">
+                            <input type="hidden" name="_xsrf" value="{{ .xsrf_token}}" />
                             <h1 class="text-center">用户登录</h1>
                             <div class="form-group row">
                                 <label class="col-form-label sr-only">用户名:</label>

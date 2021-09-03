@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="col-12 offset-2 mt-2">
                     <form action="{{ urlfor `UserController.Modify` }}" method="post">
-
+                        <input type="hidden" name="_xsrf" value="{{ .xsrf_token}}" />
                         <input type="hidden" name="id" value="{{ .form.ID }}" />
 
                         <div class="form-group row">

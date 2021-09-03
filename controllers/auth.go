@@ -54,6 +54,7 @@ func (a *AuthController) Login() {
 
 	a.Data["form"] = form
 	a.Data["errors"] = errs
+	a.Data["xsrf_token"] = a.XSRFToken()
 	//定义加载界面
 	a.TplName = "auth/login.html"
 }
