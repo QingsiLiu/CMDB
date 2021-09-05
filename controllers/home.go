@@ -5,10 +5,10 @@ import (
 )
 
 type HomeController struct {
-	auth.AuthorizationController
+	auth.LayoutController
 }
 
 func (h *HomeController) Index() {
-
 	h.TplName = "home/index.html"
+	h.Data["title"] = "首页"
 }

@@ -1,17 +1,19 @@
 package controllers
 
 import (
+	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/validation"
 	"html/template"
 	"magego/course-33/cmdb/base/controllers/auth"
 	"magego/course-33/cmdb/base/errors"
 	"magego/course-33/cmdb/forms"
 	"magego/course-33/cmdb/services"
+	"net/http"
 )
 
 // PasswordController 用户修改密码控制器
 type PasswordController struct {
-	auth.AuthorizationController
+	auth.LayoutController
 }
 
 // Modify 修改用户密码
@@ -30,6 +32,7 @@ func (p *PasswordController) Modify() {
 			} else {
 				services.UserService.ModifyUserPassword(p.LoginUser.ID, form.Password)
 				text = "修改密码成功"
+				p.Redirect(beego.URLFor("AuthController.Logout"), http.StatusFound)
 			}
 			// 验证
 			/*passwordRegexp := "^[0-9a-zA-Z_.\\$\\!#%^&\\*\\(\\)\\+]{6,20}$"
@@ -60,4 +63,5 @@ func (p *PasswordController) Modify() {
 	p.Data["errors"] = errs
 	p.Data["text"] = text
 	p.Data["xsrf_input"] = template.HTML(p.XSRFFormHTML())
+	p.Data["title"] = "修改密码"
 }

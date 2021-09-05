@@ -15,9 +15,9 @@
                 </li>
             </ul>
         </div>
-        <span class="navbar-text">
-                            欢迎 {{ .loginUser.Nickname }}
-                        </span>
+            <span class="navbar-text">
+                欢迎 <a href=" {{ urlfor `PasswordController.Modify` }} " >{{ .loginUser.Nickname }} </a>
+            </span>
         <form class="form-inline">
             <a class="btn btn-link" href=" {{ urlfor `AuthController.Logout` }}">退出登录</a>
         </form>

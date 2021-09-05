@@ -1,117 +1,83 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8"/>
-        <title>用户新建</title>
-        {{ assets_css "/static/component/bootstrap-4.6.0/css/bootstrap.min.css" }}
-        {{ assets_css "/static/css/layout.css" }}
-    </head>
-    <body>
-    {{ template "/base/templates/nav.html" . }}
-    <div class="container-fluid m-2">
-        <div class="row">
-            <div class="col-12 offset-2 mt-2">
-                <form action="{{ urlfor `UserController.New` }}" method="post">
-                    <input type="hidden" name="_xsrf" value="{{ .xsrf_token}}" />
+<div class="offset-2 mt-2">
+    <form action="{{ urlfor `UserController.New` }}" method="post">
+        <input type="hidden" name="_xsrf" value="{{ .xsrf_token}}" />
 
-                    <div class="form-group row">
-                        <label class="col-form-label col-1">工号</label>
-                        <div class="col-6">
-                            <input type="text" class="form-control" value="" name="staffId" />
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-form-label col-1">用户名</label>
-                        <div class="col-6">
-                            <input type="text" class="form-control" value="" name="name" />
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-form-label col-1">姓名</label>
-                        <div class="col-6">
-                            <input type="text" class="form-control" value="" name="nickname" />
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-form-label col-1">性别</label>
-                        <div class="col-2">
-                            <select class="form-select-sm form-control" name="gender">
-                                <option class="form-control" value="男">男</option>
-                                <option class="form-control" value="女">女</option>
-                                <option class="form-control" value="未知" selected>未知</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-form-label col-1">状态</label>
-                        <div class="col-2">
-                            <select class="form-select-sm form-control" name="status">
-                                <option class="form-control" value="正常">正常</option>
-                                <option class="form-control" value="锁定">锁定</option>
-                                <option class="form-control" value="离职">离职</option>
-                                <option class="form-control" value="未知" selected>未知</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-form-label col-1">部门</label>
-                        <div class="col-6">
-                            <input type="text" class="form-control" value="" name="department" />
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-form-label col-1">联系方式</label>
-                        <div class="col-6">
-                            <input type="text" class="form-control" value="" name="tel" />
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-form-label col-1">邮箱</label>
-                        <div class="col-6">
-                            <input type="text" class="form-control" value="" name="email" />
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-form-label col-1">联系地址</label>
-                        <div class="col-6">
-                            <input type="text" class="form-control" value="" name="addr" />
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-6 offset-2">
-                            <input type="submit" class="btn btn-info" value="提交" />
-                        </div>
-                    </div>
-                </form>
+        <div class="form-group row">
+            <label class="col-form-label col-1">工号</label>
+            <div class="col-6">
+                <input type="text" class="form-control" value="" name="staffId" />
             </div>
         </div>
-    </div>
-    </body>
-    <script>
-        window.onload = function () {
-            var gender = "{{ .form.gender }}";  // 传入后台取到的gender
-            var status = "{{ .form.status }}";  // 传入后台取到的status
-            var eles = document.querySelectorAll('select[name="gender"]>option');
-            for(var i = 0; i < eles.length; i++) {
-                if (eles[i].getAttribute('value') === gender) {
-                    eles[i].setAttribute('selected', 'selected')
-                }
-            }
-            var stas = document.querySelectorAll('select[name="status"]>option');
-            for(var j = 0; j < stas.length; j++) {
-                if (stas[j].getAttribute('value') === status) {
-                    stas[j].setAttribute('selected', 'selected')
-                }
-            }
-        }
-    </script>
-</html>
+
+        <div class="form-group row">
+            <label class="col-form-label col-1">用户名</label>
+            <div class="col-6">
+                <input type="text" class="form-control" value="" name="name" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-form-label col-1">姓名</label>
+            <div class="col-6">
+                <input type="text" class="form-control" value="" name="nickname" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-form-label col-1">性别</label>
+            <div class="col-2">
+                <select class="form-select-sm form-control" name="gender">
+                    <option class="form-control" value="男">男</option>
+                    <option class="form-control" value="女">女</option>
+                    <option class="form-control" value="未知" selected>未知</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-form-label col-1">状态</label>
+            <div class="col-2">
+                <select class="form-select-sm form-control" name="status">
+                    <option class="form-control" value="正常">正常</option>
+                    <option class="form-control" value="锁定">锁定</option>
+                    <option class="form-control" value="离职">离职</option>
+                    <option class="form-control" value="未知" selected>未知</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-form-label col-1">部门</label>
+            <div class="col-6">
+                <input type="text" class="form-control" value="" name="department" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-form-label col-1">联系方式</label>
+            <div class="col-6">
+                <input type="text" class="form-control" value="" name="tel" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-form-label col-1">邮箱</label>
+            <div class="col-6">
+                <input type="text" class="form-control" value="" name="email" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-form-label col-1">联系地址</label>
+            <div class="col-6">
+                <input type="text" class="form-control" value="" name="addr" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-6 offset-2">
+                <input type="submit" class="btn btn-info" value="提交" />
+            </div>
+        </div>
+    </form>
+</div>

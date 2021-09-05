@@ -11,7 +11,7 @@ import (
 
 // UserController 用户管理控制器
 type UserController struct {
-	auth.AuthorizationController
+	auth.LayoutController
 }
 
 // Query 查询用户
@@ -23,6 +23,7 @@ func (u *UserController) Query() {
 	u.Data["users"] = services.UserService.Query(q)
 	u.Data["q"] = q
 	u.TplName = "user/query.html"
+	u.Data["title"] = "用户列表"
 }
 
 // New 新建用户
@@ -38,6 +39,8 @@ func (u *UserController) New() {
 	//u.Data["form"] = form
 	u.Data["xsrf_token"] = u.XSRFToken()
 	u.TplName = "user/new.html"
+	u.Data["title"] = "用户新建"
+	u.LayoutSections["SectionStyle"] = "user/new_style.html"
 }
 
 // Modify 修改用户
@@ -82,6 +85,7 @@ func (u *UserController) Modify() {
 	u.Data["form"] = form
 	u.Data["xsrf_token"] = u.XSRFToken()
 	u.TplName = "user/modify.html"
+	u.Data["title"] = "用户修改"
 }
 
 // Delete 删除用户
