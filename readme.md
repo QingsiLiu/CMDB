@@ -142,3 +142,33 @@ CSRF:网络攻击-扩展请求伪造
 
      c.提交时必须提交token，beego自动验证(Post, Delete, Put)，csrf_token =>
 
+
+cobra
+    beego orm --db --force --verbose
+
+    main web
+         db init
+
+管理员：操作用户管理
+        UserController
+        Prepare => 判断用户是否是管理员 => 不是跳转到无权限页面/是管理员则继续访问
+
+普通用户：任务管理
+
+限制普通用户操作UserController
+        发起请求 => 请求操作成功
+
+限制未登录用户操作UserController
+        session => User 有 放行
+                        无 跳转到登录页面
+
+role {
+    1 : [controller1.Action1, controller2.Action2],
+    2 : [controller1.Action1, controller2.Action2]
+}
+
+Authorization => session => user => role => actions
+            GetControllerAndAction
+    在 actions => 有权限
+    不在 => 无权限
+

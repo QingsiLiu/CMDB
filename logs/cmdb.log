@@ -1,179 +1,23 @@
-2021/09/05 19:11:47.377 [I] [asm_amd64.s:1374]  http server Running on http://:8080
-2021/09/05 19:11:55.467 [D] [server.go:2843]  |            ::1|[47m 302 [0m|           0s|   match|[44m GET     [0m /auth/logout   r:/auth/logout/*
-2021/09/05 19:11:55.472 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     1.9997ms|   match|[44m GET     [0m /auth/login   r:/auth/login/*
-2021/09/05 19:12:00.854 [E] [auth.go:41]  用户认证失败：111 
-2021/09/05 19:12:00.857 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     5.0012ms|   match|[46m POST    [0m /auth/login   r:/auth/login/*
-2021/09/05 19:12:16.322 [I] [auth.go:43]  用户认证成功：lhq 
-2021/09/05 19:12:16.323 [D] [server.go:2843]  |            ::1|[47m 302 [0m|   109.0246ms|   match|[46m POST    [0m /auth/login   r:/auth/login/*
-2021/09/05 19:12:16.333 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     6.0017ms|   match|[44m GET     [0m /user/query   r:/user/query/*
-2021/09/05 19:15:18.993 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     3.0019ms|   match|[44m GET     [0m /     r:/
-2021/09/05 19:27:53.442 [I] [asm_amd64.s:1374]  http server Running on http://:8080
-2021/09/05 19:27:59.494 [C] [panic.go:969]  the request url is  /user/query
-2021/09/05 19:27:59.494 [C] [panic.go:969]  Handler crashed with error can't find templatefile in the path:views/base/layouts/layout.html
-2021/09/05 19:27:59.494 [C] [panic.go:969]  E:/golang/src/runtime/panic.go:969
-2021/09/05 19:27:59.494 [C] [panic.go:969]  E:/Go/pkg/mod/github.com/astaxie/beego@v1.12.3/template.go:75
-2021/09/05 19:27:59.494 [C] [panic.go:969]  E:/Go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:278
-2021/09/05 19:27:59.494 [C] [panic.go:969]  E:/Go/pkg/mod/github.com/astaxie/beego@v1.12.3/controller.go:237
-2021/09/05 19:27:59.494 [C] [panic.go:969]  E:/Go/pkg/mod/github.com/astaxie/beego@v1.12.3/router.go:909
-2021/09/05 19:27:59.494 [C] [panic.go:969]  E:/golang/src/net/http/server.go:2843
-2021/09/05 19:27:59.494 [C] [panic.go:969]  E:/golang/src/net/http/server.go:1925
-2021/09/05 19:27:59.494 [C] [panic.go:969]  E:/golang/src/runtime/asm_amd64.s:1374
-2021/09/05 19:27:59.494 [server.go:3093]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)
-2021/09/05 19:28:38.208 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     4.9995ms|   match|[44m GET     [0m /user/query   r:/user/query/*
-2021/09/05 19:29:26.220 [I] [asm_amd64.s:1374]  http server Running on http://:8080
-2021/09/05 19:29:29.397 [D] [server.go:2843]  |            ::1|[42m 200 [0m|      5.001ms|   match|[44m GET     [0m /user/query   r:/user/query/*
-2021/09/05 19:29:29.846 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     3.0011ms|   match|[44m GET     [0m /user/query   r:/user/query/*
-2021/09/05 19:29:29.993 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     4.0006ms|   match|[44m GET     [0m /user/query   r:/user/query/*
-2021/09/05 19:30:00.019 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     5.0024ms|   match|[44m GET     [0m /user/query   r:/user/query/*
-2021/09/05 19:31:58.482 [I] [asm_amd64.s:1374]  http server Running on http://:8080
-2021/09/05 19:32:01.384 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     6.0017ms|   match|[44m GET     [0m /user/query   r:/user/query/*
-2021/09/05 19:35:00.380 [I] [asm_amd64.s:1374]  http server Running on http://:8080
-2021/09/05 19:35:04.216 [D] [server.go:2843]  |            ::1|[42m 200 [0m|      5.001ms|   match|[44m GET     [0m /user/modify   r:/user/modify/*
-2021/09/05 19:35:05.899 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     1.9993ms|   match|[44m GET     [0m /user/new   r:/user/new/*
-2021/09/05 19:35:08.825 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     3.0017ms|   match|[44m GET     [0m /user/modify   r:/user/modify/*
-2021/09/05 19:35:11.045 [D] [server.go:2843]  |            ::1|[47m 302 [0m|    60.0129ms|   match|[46m POST    [0m /user/modify   r:/user/modify/*
-2021/09/05 19:35:11.051 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     4.0001ms|   match|[44m GET     [0m /user/query   r:/user/query/*
-2021/09/05 19:35:13.937 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     2.9998ms|   match|[44m GET     [0m /user/modify   r:/user/modify/*
-2021/09/05 19:35:15.704 [D] [server.go:2843]  |            ::1|[47m 302 [0m|    57.0128ms|   match|[46m POST    [0m /user/modify   r:/user/modify/*
-2021/09/05 19:35:15.710 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     4.0016ms|   match|[44m GET     [0m /user/query   r:/user/query/*
-2021/09/05 19:35:16.967 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     2.9997ms|   match|[44m GET     [0m /user/new   r:/user/new/*
-2021/09/05 19:35:20.011 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     3.9996ms|   match|[44m GET     [0m /user/query   r:/user/query/*
-2021/09/05 19:43:05.349 [I] [asm_amd64.s:1374]  http server Running on http://:8080
-2021/09/05 19:43:08.431 [D] [server.go:2843]  |            ::1|[47m 302 [0m|     1.0005ms|   match|[44m GET     [0m /auth/logout   r:/auth/logout/*
-2021/09/05 19:43:08.437 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     2.9999ms|   match|[44m GET     [0m /auth/login   r:/auth/login/*
-2021/09/05 19:43:12.498 [I] [auth.go:43]  用户认证成功：lhq 
-2021/09/05 19:43:12.498 [D] [server.go:2843]  |            ::1|[47m 302 [0m|   110.0247ms|   match|[46m POST    [0m /auth/login   r:/auth/login/*
-2021/09/05 19:43:12.506 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     5.0011ms|   match|[44m GET     [0m /user/query   r:/user/query/*
-2021/09/05 19:43:14.529 [D] [server.go:2843]  |            ::1|[42m 200 [0m|      4.001ms|   match|[44m GET     [0m /user/modify   r:/user/modify/*
-2021/09/05 19:43:19.680 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     3.0011ms|   match|[44m GET     [0m /user/modify   r:/user/modify/*
-2021/09/05 19:43:24.925 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     2.9998ms|   match|[44m GET     [0m /user/new   r:/user/new/*
-2021/09/05 19:52:33.354 [I] [asm_amd64.s:1374]  http server Running on http://:8080
-2021/09/05 19:52:37.910 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     4.9998ms|   match|[44m GET     [0m /user/query   r:/user/query/*
-2021/09/05 19:52:38.894 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     2.0012ms|   match|[44m GET     [0m /user/new   r:/user/new/*
-2021/09/05 19:52:48.344 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     3.0006ms|   match|[44m GET     [0m /user/new   r:/user/new/*
-2021/09/05 19:52:59.361 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     3.0008ms|   match|[44m GET     [0m /home/index   r:/home/index/*
-2021/09/05 19:53:00.459 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     3.9992ms|   match|[44m GET     [0m /user/query   r:/user/query/*
-2021/09/05 19:53:09.126 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     4.0006ms|   match|[44m GET     [0m /user/new   r:/user/new/*
-2021/09/05 19:53:10.817 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     4.0016ms|   match|[44m GET     [0m /user/query   r:/user/query/*
-2021/09/05 20:01:55.338 [I] [asm_amd64.s:1374]  http server Running on http://:8080
-2021/09/05 20:02:00.369 [D] [server.go:2843]  |            ::1|[47m 302 [0m|           0s|   match|[44m GET     [0m /auth/logout   r:/auth/logout/*
-2021/09/05 20:02:00.374 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     3.0006ms|   match|[44m GET     [0m /auth/login   r:/auth/login/*
-2021/09/05 20:02:03.656 [E] [auth.go:51]  用户认证失败：lhq 
-2021/09/05 20:02:03.658 [D] [server.go:2843]  |            ::1|[42m 200 [0m|   110.0247ms|   match|[46m POST    [0m /auth/login   r:/auth/login/*
-2021/09/05 20:02:06.520 [I] [auth.go:43]  用户认证成功：lhq 
-2021/09/05 20:02:06.520 [D] [server.go:2843]  |            ::1|[47m 302 [0m|   108.0239ms|   match|[46m POST    [0m /auth/login   r:/auth/login/*
-2021/09/05 20:02:06.527 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     5.0006ms|   match|[44m GET     [0m /user/query   r:/user/query/*
-2021/09/05 20:02:08.838 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     4.0014ms|   match|[44m GET     [0m /user/modify   r:/user/modify/*
-2021/09/05 20:02:10.417 [D] [server.go:2843]  |            ::1|[42m 200 [0m|          3ms|   match|[44m GET     [0m /user/new   r:/user/new/*
-2021/09/05 20:02:13.801 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     3.0002ms|   match|[44m GET     [0m /password/modify   r:/password/modify/*
-2021/09/05 20:02:20.232 [D] [server.go:2843]  |            ::1|[42m 200 [0m|      4.001ms|   match|[44m GET     [0m /user/query   r:/user/query/*
-2021/09/05 20:02:21.288 [D] [server.go:2843]  |            ::1|[47m 302 [0m|     1.0017ms|   match|[44m GET     [0m /auth/logout   r:/auth/logout/*
-2021/09/05 20:02:21.291 [D] [server.go:2843]  |            ::1|[42m 200 [0m|      999.5µs|   match|[44m GET     [0m /auth/login   r:/auth/login/*
-2021/09/05 20:02:25.206 [I] [auth.go:43]  用户认证成功：lhq 
-2021/09/05 20:02:25.206 [D] [server.go:2843]  |            ::1|[47m 302 [0m|   110.0252ms|   match|[46m POST    [0m /auth/login   r:/auth/login/*
-2021/09/05 20:02:25.213 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     4.0006ms|   match|[44m GET     [0m /user/query   r:/user/query/*
-2021/09/05 20:02:25.896 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     4.0009ms|   match|[44m GET     [0m /password/modify   r:/password/modify/*
-2021/09/05 20:02:35.277 [D] [server.go:2843]  |            ::1|[42m 200 [0m|   165.0362ms|   match|[46m POST    [0m /password/modify   r:/password/modify/*
-2021/09/05 20:02:38.883 [D] [server.go:2843]  |            ::1|[47m 302 [0m|           0s|   match|[44m GET     [0m /auth/logout   r:/auth/logout/*
-2021/09/05 20:02:38.887 [D] [server.go:2843]  |            ::1|[42m 200 [0m|      999.8µs|   match|[44m GET     [0m /auth/login   r:/auth/login/*
-2021/09/05 20:02:42.597 [I] [auth.go:43]  用户认证成功：lhq 
-2021/09/05 20:02:42.597 [D] [server.go:2843]  |            ::1|[47m 302 [0m|   108.0241ms|   match|[46m POST    [0m /auth/login   r:/auth/login/*
-2021/09/05 20:02:42.603 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     4.0014ms|   match|[44m GET     [0m /user/query   r:/user/query/*
-2021/09/05 20:03:18.319 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     4.0014ms|   match|[44m GET     [0m /password/modify   r:/password/modify/*
-2021/09/05 20:03:28.323 [D] [server.go:2843]  |            ::1|[42m 200 [0m|      2.001ms|   match|[44m GET     [0m /password/modify   r:/password/modify/*
-2021/09/05 20:03:36.689 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     3.0009ms|   match|[44m GET     [0m /password/modify   r:/password/modify/*
-2021/09/05 20:03:54.522 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     1.9996ms|   match|[44m GET     [0m /password/modify   r:/password/modify/*
-2021/09/05 20:04:10.336 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     3.0004ms|   match|[44m GET     [0m /password/modify   r:/password/modify/*
-2021/09/05 20:04:25.878 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     2.0006ms|   match|[44m GET     [0m /home/index   r:/home/index/*
-2021/09/05 20:04:27.025 [D] [server.go:2843]  |            ::1|[42m 200 [0m|      5.001ms|   match|[44m GET     [0m /user/query   r:/user/query/*
-2021/09/05 20:04:32.439 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     1.9995ms|   match|[44m GET     [0m /password/modify   r:/password/modify/*
-2021/09/05 20:04:40.182 [D] [server.go:2843]  |            ::1|[42m 200 [0m|   166.0369ms|   match|[46m POST    [0m /password/modify   r:/password/modify/*
-2021/09/05 20:04:42.719 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     4.0022ms|   match|[44m GET     [0m /user/query   r:/user/query/*
-2021/09/05 20:06:55.258 [I] [asm_amd64.s:1374]  http server Running on http://:8080
-2021/09/05 20:07:01.657 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     4.0004ms|   match|[44m GET     [0m /password/modify   r:/password/modify/*
-2021/09/05 20:07:08.969 [D] [server.go:2843]  |            ::1|[47m 302 [0m|   165.0364ms|   match|[46m POST    [0m /password/modify   r:/password/modify/*
-2021/09/05 20:07:08.972 [D] [server.go:2843]  |            ::1|[47m 302 [0m|           0s|   match|[44m GET     [0m /auth/login   r:/auth/login/*
-2021/09/05 20:07:08.978 [D] [server.go:2843]  |            ::1|[42m 200 [0m|      4.001ms|   match|[44m GET     [0m /user/query   r:/user/query/*
-2021/09/05 20:07:12.806 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     3.0016ms|   match|[44m GET     [0m /password/modify   r:/password/modify/*
-2021/09/05 20:07:20.616 [D] [server.go:2843]  |            ::1|[47m 302 [0m|   165.0373ms|   match|[46m POST    [0m /password/modify   r:/password/modify/*
-2021/09/05 20:07:20.619 [D] [server.go:2843]  |            ::1|[47m 302 [0m|           0s|   match|[44m GET     [0m /auth/login   r:/auth/login/*
-2021/09/05 20:07:20.625 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     4.0004ms|   match|[44m GET     [0m /user/query   r:/user/query/*
-2021/09/05 20:08:41.365 [I] [asm_amd64.s:1374]  http server Running on http://:8080
-2021/09/05 20:08:46.478 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     5.0013ms|   match|[44m GET     [0m /password/modify   r:/password/modify/*
-2021/09/05 20:08:52.887 [D] [server.go:2843]  |            ::1|[47m 302 [0m|   164.0361ms|   match|[46m POST    [0m /password/modify   r:/password/modify/*
-2021/09/05 20:08:52.891 [D] [server.go:2843]  |            ::1|[47m 302 [0m|      999.1µs|   match|[44m GET     [0m /auth/logout   r:/auth/logout/*
-2021/09/05 20:08:52.894 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     2.0001ms|   match|[44m GET     [0m /auth/login   r:/auth/login/*
-2021/09/05 20:08:56.601 [I] [auth.go:43]  用户认证成功：lhq 
-2021/09/05 20:08:56.601 [D] [server.go:2843]  |            ::1|[47m 302 [0m|   107.0241ms|   match|[46m POST    [0m /auth/login   r:/auth/login/*
-2021/09/05 20:08:56.608 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     4.0003ms|   match|[44m GET     [0m /user/query   r:/user/query/*
-2021/09/05 20:08:57.559 [D] [server.go:2843]  |            ::1|[47m 302 [0m|     1.0011ms|   match|[44m GET     [0m /auth/logout   r:/auth/logout/*
-2021/09/05 20:08:57.564 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     2.0006ms|   match|[44m GET     [0m /auth/login   r:/auth/login/*
-2021/09/05 20:09:01.002 [I] [auth.go:43]  用户认证成功：lhq 
-2021/09/05 20:09:01.002 [D] [server.go:2843]  |            ::1|[47m 302 [0m|   108.0238ms|   match|[46m POST    [0m /auth/login   r:/auth/login/*
-2021/09/05 20:09:01.009 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     4.0008ms|   match|[44m GET     [0m /user/query   r:/user/query/*
-2021/09/05 20:09:01.836 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     3.0011ms|   match|[44m GET     [0m /password/modify   r:/password/modify/*
-2021/09/05 20:09:07.788 [D] [server.go:2843]  |            ::1|[47m 302 [0m|    164.036ms|   match|[46m POST    [0m /password/modify   r:/password/modify/*
-2021/09/05 20:09:07.790 [D] [server.go:2843]  |            ::1|[47m 302 [0m|           0s|   match|[44m GET     [0m /auth/logout   r:/auth/logout/*
-2021/09/05 20:09:07.794 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     1.0001ms|   match|[44m GET     [0m /auth/login   r:/auth/login/*
-2021/09/05 20:09:11.720 [I] [auth.go:43]  用户认证成功：lhq 
-2021/09/05 20:09:11.720 [D] [server.go:2843]  |            ::1|[47m 302 [0m|   109.0238ms|   match|[46m POST    [0m /auth/login   r:/auth/login/*
-2021/09/05 20:09:11.726 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     4.0007ms|   match|[44m GET     [0m /user/query   r:/user/query/*
-2021/09/05 20:10:57.757 [I] [asm_amd64.s:1374]  http server Running on http://:8080
-2021/09/05 20:11:01.661 [D] [server.go:2843]  |            ::1|[47m 302 [0m|     1.0011ms|   match|[44m GET     [0m /auth/logout   r:/auth/logout/*
-2021/09/05 20:11:01.666 [D] [controller.go:306]  template Execute err: template: auth/login.html:14:26: executing "auth/login.html" at <ne .text "">: error calling ne: invalid type for comparison
-2021/09/05 20:11:01.666 [E] [server.go:2843]  template: auth/login.html:14:26: executing "auth/login.html" at <ne .text "">: error calling ne: invalid type for comparison
-2021/09/05 20:11:01.666 [D] [server.go:2843]  |            ::1|[42m 200 [0m|      1.999ms|   match|[44m GET     [0m /auth/login   r:/auth/login/*
-2021/09/05 20:11:04.004 [D] [controller.go:306]  template Execute err: template: auth/login.html:14:26: executing "auth/login.html" at <ne .text "">: error calling ne: invalid type for comparison
-2021/09/05 20:11:04.004 [E] [server.go:2843]  template: auth/login.html:14:26: executing "auth/login.html" at <ne .text "">: error calling ne: invalid type for comparison
-2021/09/05 20:11:04.004 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     1.9997ms|   match|[44m GET     [0m /auth/login   r:/auth/login/*
-2021/09/05 20:11:04.455 [D] [controller.go:306]  template Execute err: template: auth/login.html:14:26: executing "auth/login.html" at <ne .text "">: error calling ne: invalid type for comparison
-2021/09/05 20:11:04.455 [E] [server.go:2843]  template: auth/login.html:14:26: executing "auth/login.html" at <ne .text "">: error calling ne: invalid type for comparison
-2021/09/05 20:11:04.455 [D] [server.go:2843]  |            ::1|[42m 200 [0m|      999.9µs|   match|[44m GET     [0m /auth/login   r:/auth/login/*
-2021/09/05 20:11:04.623 [D] [controller.go:306]  template Execute err: template: auth/login.html:14:26: executing "auth/login.html" at <ne .text "">: error calling ne: invalid type for comparison
-2021/09/05 20:11:04.623 [E] [server.go:2843]  template: auth/login.html:14:26: executing "auth/login.html" at <ne .text "">: error calling ne: invalid type for comparison
-2021/09/05 20:11:04.623 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     2.0009ms|   match|[44m GET     [0m /auth/login   r:/auth/login/*
-2021/09/05 20:11:04.766 [D] [controller.go:306]  template Execute err: template: auth/login.html:14:26: executing "auth/login.html" at <ne .text "">: error calling ne: invalid type for comparison
-2021/09/05 20:11:04.766 [E] [server.go:2843]  template: auth/login.html:14:26: executing "auth/login.html" at <ne .text "">: error calling ne: invalid type for comparison
-2021/09/05 20:11:04.766 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     2.0005ms|   match|[44m GET     [0m /auth/login   r:/auth/login/*
-2021/09/05 20:11:29.346 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     1.0007ms|   match|[44m GET     [0m /auth/login   r:/auth/login/*
-2021/09/05 20:12:07.663 [D] [controller.go:306]  template Execute err: template: auth/login.html:15:30: executing "auth/login.html" at <ne .text "">: error calling ne: invalid type for comparison
-2021/09/05 20:12:07.663 [E] [server.go:2843]  template: auth/login.html:15:30: executing "auth/login.html" at <ne .text "">: error calling ne: invalid type for comparison
-2021/09/05 20:12:07.663 [D] [server.go:2843]  |            ::1|[42m 200 [0m|      999.2µs|   match|[44m GET     [0m /auth/login   r:/auth/login/*
-2021/09/05 20:13:31.066 [D] [controller.go:306]  template Execute err: template: auth/login.html:16:34: executing "auth/login.html" at <ne .text "">: error calling ne: invalid type for comparison
-2021/09/05 20:13:31.066 [E] [server.go:2843]  template: auth/login.html:16:34: executing "auth/login.html" at <ne .text "">: error calling ne: invalid type for comparison
-2021/09/05 20:13:31.066 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     1.0001ms|   match|[44m GET     [0m /auth/login   r:/auth/login/*
-2021/09/05 20:15:16.934 [I] [asm_amd64.s:1374]  http server Running on http://:8080
-2021/09/05 20:15:20.763 [D] [controller.go:306]  template Execute err: template: auth/login.html:16:34: executing "auth/login.html" at <ne .text "">: error calling ne: invalid type for comparison
-2021/09/05 20:15:20.763 [E] [server.go:2843]  template: auth/login.html:16:34: executing "auth/login.html" at <ne .text "">: error calling ne: invalid type for comparison
-2021/09/05 20:15:20.763 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     3.0005ms|   match|[44m GET     [0m /auth/login   r:/auth/login/*
-2021/09/05 20:15:23.629 [D] [server.go:2843]  |            ::1|[47m 302 [0m|      999.5µs|   match|[44m GET     [0m /     r:/
-2021/09/05 20:15:25.903 [D] [controller.go:306]  template Execute err: template: auth/login.html:16:34: executing "auth/login.html" at <ne .text "">: error calling ne: invalid type for comparison
-2021/09/05 20:15:25.903 [E] [server.go:2843]  template: auth/login.html:16:34: executing "auth/login.html" at <ne .text "">: error calling ne: invalid type for comparison
-2021/09/05 20:15:25.904 [D] [server.go:2843]  |            ::1|[42m 200 [0m|          2ms|   match|[44m GET     [0m /auth/login   r:/auth/login/*
-2021/09/05 20:15:49.190 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     1.0005ms|   match|[44m GET     [0m /auth/login   r:/auth/login/*
-2021/09/05 20:15:52.213 [E] [auth.go:51]  用户认证失败：lhq 
-2021/09/05 20:15:52.214 [D] [server.go:2843]  |            ::1|[42m 200 [0m|   112.0256ms|   match|[46m POST    [0m /auth/login   r:/auth/login/*
-2021/09/05 20:15:55.349 [I] [auth.go:43]  用户认证成功：lhq 
-2021/09/05 20:15:55.350 [D] [server.go:2843]  |            ::1|[47m 302 [0m|   109.0246ms|   match|[46m POST    [0m /auth/login   r:/auth/login/*
-2021/09/05 20:15:55.356 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     4.0006ms|   match|[44m GET     [0m /user/query   r:/user/query/*
-2021/09/05 20:15:57.091 [D] [controller.go:306]  template Execute err: template: password/modify.html:5:14: executing "password/modify.html" at <ne .text "">: error calling ne: invalid type for comparison
-2021/09/05 20:15:57.091 [E] [server.go:2843]  template: password/modify.html:5:14: executing "password/modify.html" at <ne .text "">: error calling ne: invalid type for comparison
-2021/09/05 20:15:57.091 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     1.9993ms|   match|[44m GET     [0m /password/modify   r:/password/modify/*
-2021/09/05 20:16:35.657 [I] [asm_amd64.s:1374]  http server Running on http://:8080
-2021/09/05 20:16:39.038 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     4.0009ms|   match|[44m GET     [0m /password/modify   r:/password/modify/*
-2021/09/05 20:17:11.021 [I] [asm_amd64.s:1374]  http server Running on http://:8080
-2021/09/05 20:17:15.542 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     4.0007ms|   match|[44m GET     [0m /home/index   r:/home/index/*
-2021/09/05 20:17:17.355 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     5.0009ms|   match|[44m GET     [0m /user/query   r:/user/query/*
-2021/09/05 20:17:18.342 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     2.0001ms|   match|[44m GET     [0m /password/modify   r:/password/modify/*
-2021/09/05 20:53:43.616 [I] [asm_amd64.s:1374]  http server Running on http://:8080
-2021/09/05 20:54:08.893 [D] [server.go:2843]  |            ::1|[47m 302 [0m|           0s|   match|[44m GET     [0m /auth/logout   r:/auth/logout/*
-2021/09/05 20:54:08.898 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     3.0009ms|   match|[44m GET     [0m /auth/login   r:/auth/login/*
-2021/09/05 20:54:13.126 [I] [auth.go:46]  用户认证成功：lhq 
-2021/09/05 20:54:13.126 [D] [server.go:2843]  |            ::1|[47m 302 [0m|   115.0283ms|   match|[46m POST    [0m /auth/login   r:/auth/login/*
-2021/09/05 20:54:13.135 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     7.0013ms|   match|[44m GET     [0m /user/query   r:/user/query/*
-2021/09/05 20:54:39.042 [I] [asm_amd64.s:1374]  http server Running on http://:8080
-2021/09/05 20:54:41.079 [D] [server.go:2843]  |            ::1|[47m 302 [0m|     1.0004ms|   match|[44m GET     [0m /auth/logout   r:/auth/logout/*
-2021/09/05 20:54:41.084 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     3.0012ms|   match|[44m GET     [0m /auth/login   r:/auth/login/*
-2021/09/05 20:54:44.524 [I] [auth.go:46]  用户认证成功：lhq 
-2021/09/05 20:54:44.525 [D] [server.go:2843]  |            ::1|[47m 302 [0m|     62.015ms|   match|[46m POST    [0m /auth/login   r:/auth/login/*
-2021/09/05 20:54:44.533 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     5.0006ms|   match|[44m GET     [0m /user/query   r:/user/query/*
+2021/09/06 19:25:53.982 [I] [asm_amd64.s:1371]  http server Running on http://:8080
+2021/09/06 19:25:53.984 [I] [asm_amd64.s:1371]  https server Running on https://:443
+2021/09/06 19:25:54.045 [D] [server.go:2887]  |            ::1|[42m 200 [0m|    14.6712ms|   match|[44m GET     [0m /user/query   r:/user/query/*
+2021/09/06 19:25:58.494 [D] [server.go:2887]  |            ::1|[42m 200 [0m|    21.0139ms|   match|[44m GET     [0m /task/query   r:/task/query/*
+2021/09/06 19:25:59.495 [D] [server.go:2887]  |            ::1|[42m 200 [0m|    11.5401ms|   match|[44m GET     [0m /task/new   r:/task/new/*
+2021/09/06 19:28:28.211 [I] [asm_amd64.s:1371]  http server Running on http://:8080
+2021/09/06 19:28:28.212 [I] [asm_amd64.s:1371]  https server Running on https://:443
+2021/09/06 19:28:31.232 [D] [server.go:2887]  |            ::1|[42m 200 [0m|    20.5619ms|   match|[44m GET     [0m /task/query   r:/task/query/*
+2021/09/06 19:28:33.606 [D] [server.go:2887]  |            ::1|[42m 200 [0m|    10.3884ms|   match|[44m GET     [0m /task/new   r:/task/new/*
+2021/09/06 19:28:40.548 [C] [panic.go:965]  the request url is  /task/new
+2021/09/06 19:28:40.548 [C] [panic.go:965]  Handler crashed with error <Ormer> table: `.` not found, make sure it was registered with `RegisterModel()`
+2021/09/06 19:28:40.548 [C] [panic.go:965]  D:/GO/src/runtime/panic.go:965
+2021/09/06 19:28:40.548 [C] [panic.go:965]  D:/GoWorkSpace/pkg/mod/github.com/astaxie/beego@v1.12.3/orm/orm.go:114
+2021/09/06 19:28:40.548 [C] [panic.go:965]  D:/GoWorkSpace/pkg/mod/github.com/astaxie/beego@v1.12.3/orm/orm.go:163
+2021/09/06 19:28:40.548 [C] [panic.go:965]  D:/GoWorkSpace/src/magego/course-33/cmdb/services/task.go:28
+2021/09/06 19:28:40.548 [C] [panic.go:965]  D:/GoWorkSpace/src/magego/course-33/cmdb/controllers/task.go:33
+2021/09/06 19:28:40.548 [C] [panic.go:965]  D:/GO/src/reflect/value.go:476
+2021/09/06 19:28:40.548 [C] [panic.go:965]  D:/GO/src/reflect/value.go:337
+2021/09/06 19:28:40.548 [C] [panic.go:965]  D:/GoWorkSpace/pkg/mod/github.com/astaxie/beego@v1.12.3/router.go:897
+2021/09/06 19:28:40.548 [C] [panic.go:965]  D:/GO/src/net/http/server.go:2887
+2021/09/06 19:28:40.548 [C] [panic.go:965]  D:/GO/src/net/http/server.go:1952
+2021/09/06 19:28:40.548 [C] [panic.go:965]  D:/GO/src/runtime/asm_amd64.s:1371
+2021/09/06 19:28:40.549 [server.go:3137]  [HTTP] http: superfluous response.WriteHeader call from github.com/astaxie/beego/context.(*Response).WriteHeader (context.go:230)

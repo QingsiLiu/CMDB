@@ -1,0 +1,51 @@
+package controllers
+
+import (
+	"github.com/astaxie/beego"
+	"magego/course-33/cmdb/base/controllers/auth"
+	"magego/course-33/cmdb/forms"
+	"magego/course-33/cmdb/services"
+	"net/http"
+	"strings"
+	"time"
+)
+
+const TimeLayout = "2006-01-02 15:04"
+
+type TaskController struct {
+	auth.LayoutController
+}
+
+func formatTime(t string) *time.Time {
+	if t != "" {
+		ft, _ := time.Parse(TimeLayout, strings.ReplaceAll(t, "T", " "))
+		return &ft
+	}
+	return nil
+}
+
+// New 添加任务
+func (t *TaskController) New() {
+	taskform := &forms.TaskForm{}
+
+	if t.Ctx.Input.IsPost() {
+		if err := t.ParseForm(taskform); err == nil {
+			services.TaskService.New(taskform)
+			t.Redirect(beego.URLFor("TaskController.Query"), http.StatusFound)
+		}
+	}
+
+	t.Data["xsrf_token"] = t.XSRFToken()
+	t.TplName = "task/new.html"
+	t.Data["title"] = "用户新建"
+}
+
+// Query 查询任务列表
+func (t *TaskController) Query() {
+	beego.ReadFromRequest(&t.Controller)
+
+	q := t.GetString("q")
+	t.Data["tasks"] = services.TaskService.Query(q)
+	t.TplName = "task/query.html"
+	t.Data["title"] = "任务列表"
+}

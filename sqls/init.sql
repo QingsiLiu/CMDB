@@ -22,7 +22,7 @@ create table if not exists user(
 select id, staff_id, name, nickname, password, gender, tel, email, addr, department, status, created_at, updated_at, deleted_at from user;
 
 insert into user(staff_id, name, nickname, password, gender, tel, email, addr, department, status, created_at, updated_at)
-values ('L0001', 'lhq', 'LHQ', md5('123'), '1', '15209880622', '1029806879@qq.com', '之江家园二区', 'sb', '0', '2021/08/23', '2021/08/23');
+values ('L0001', 'lhq', 'LHQ', '$2a$10$TKP0wGzN41tmCyyf0Dr98Op6CCOFNw/3KpAqcW45zGopZvRmbxA3C', '1', '15209880622', '1029806879@qq.com', '之江家园二区', 'sb', '0', '2021/08/23', '2021/08/23');
 
 insert into user(staff_id, name, nickname, password, gender, tel, email, addr, department, status, created_at, updated_at)
-values ('L0002', 'hab', 'HAB', md5('123'), '2', '15868783887', '1029806879@qq.com', '之江家园二区', 'sb', '0', '2021/08/23', '2021/08/23');
+values ('L0002', 'hab', 'HAB', '$2a$10$TKP0wGzN41tmCyyf0Dr98Op6CCOFNw/3KpAqcW45zGopZvRmbxA3C', '2', '15868783887', '1029806879@qq.com', '之江家园二区', 'sb', '0', '2021/08/23', '2021/08/23');

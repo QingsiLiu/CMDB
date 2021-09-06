@@ -13,6 +13,9 @@
                 <li class="nav-item {{ if eq .nav `user` }} active {{ end }}">
                     <a class="nav-link" href="{{ urlfor `UserController.Query` }}">用户管理</a>
                 </li>
+                <li class="nav-item {{ if eq .nav `task` }} active {{ end }}">
+                    <a class="nav-link" href="{{ urlfor `TaskController.Query` }}">任务管理</a>
+                </li>
             </ul>
         </div>
             <span class="navbar-text">

@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"fmt"
 	"github.com/astaxie/beego"
 	"magego/course-33/cmdb/base/controllers/auth"
 	"magego/course-33/cmdb/forms"
@@ -16,8 +15,8 @@ type UserController struct {
 
 // Query 查询用户
 func (u *UserController) Query() {
-	flash := beego.ReadFromRequest(&u.Controller)
-	fmt.Println(flash.Data)
+	beego.ReadFromRequest(&u.Controller)
+
 	q := u.GetString("q")
 
 	u.Data["users"] = services.UserService.Query(q)

@@ -10,6 +10,7 @@ func init() {
 	beego.AutoRouter(&controllers.HomeController{})
 	beego.AutoRouter(&controllers.UserController{})
 	beego.AutoRouter(&controllers.PasswordController{})
+	beego.AutoRouter(&controllers.TaskController{})
 
 	beego.Router("/", &controllers.HomeController{}, "*:Index")
 
