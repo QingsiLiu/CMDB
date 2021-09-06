@@ -16,3 +16,10 @@ func String2Time(t string) *time.Time {
 	}
 	return &timeNow
 }
+
+func Time2String(t *time.Time) string {
+	if t == nil {
+		return "--"
+	}
+	return t.Format(TimeLayout)
+}

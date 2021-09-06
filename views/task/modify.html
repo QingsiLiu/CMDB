@@ -1,0 +1,60 @@
+<div class="offset-2 mt-2">
+    <form action="{{ urlfor `TaskController.Modify` }}" method="post">
+        <input type="hidden" name="_xsrf" value="{{ .xsrf_token}}" />
+        <input type="hidden" name="id" value="{{ .form.ID }}" />
+
+        <div class="form-group row">
+            <label class="col-form-label col-1">任务名称</label>
+            <div class="col-6">
+                <input type="text" class="form-control" value="{{ .form.Name }}" name="name" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-form-label col-1">状态</label>
+            <div class="col-2">
+                <select class="form-select-sm form-control" name="status">
+                    <option class="form-control" value="新建">新建</option>
+                    <option class="form-control" value="锁定">开始</option>
+                    <option class="form-control" value="暂停">暂停</option>
+                    <option class="form-control" value="完成">完成</option>
+                    <option class="form-control" value="未知" selected>未知</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-form-label col-1">开始时间</label>
+            <div class="col-6">
+                <input type="text" class="form-control" value="{{ .form.StartTime }}" name="start_time" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-form-label col-1">完成时间</label>
+            <div class="col-6">
+                <input type="text" class="form-control" value="{{ .form.CompleteTime }}" name="complete_time" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-form-label col-1">截止时间</label>
+            <div class="col-6">
+                <input type="text" class="form-control" value="{{ .form.DeadlineTime }}" name="deadline_time" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-form-label col-1">任务详情</label>
+            <div class="col-6">
+                <textarea id="content" class="form-control" placeholder="请输入内容" name="content" rows="10">{{ .form.Content }}</textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-6 offset-2">
+                <input type="submit" class="btn btn-info" value="提交" />
+            </div>
+        </div>
+    </form>
+</div>

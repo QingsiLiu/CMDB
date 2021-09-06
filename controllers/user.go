@@ -89,7 +89,7 @@ func (u *UserController) Modify() {
 
 // Delete 删除用户
 func (u *UserController) Delete() {
-	if pk, err := u.GetInt("pk"); err == nil && u.LoginUser.ID != pk {
+	if pk, err := u.GetInt("pk"); err == nil {
 		services.UserService.Delete(pk)
 	}
 

@@ -13,10 +13,9 @@ var webCommand = &cobra.Command{
 	Short: "web console",
 	Long:  "web console",
 	RunE: func(cmd *cobra.Command, args []string) error {
-		beego.SetLogger("file", `{"filename" : "logs/cmdb.log"}`)
+		/*beego.SetLogger("file", `{"filename" : "logs/cmdb.log"}`)
 		beego.SetLogFuncCall(true)
-		beego.SetLevel(beego.LevelDebug)
-		beego.BeeLogger.DelLogger("console")
+		beego.BeeLogger.DelLogger("console")*/
 
 		config.Init("file", `{"CachePath" : "tmp/cache", "FileSuffix" : ".cache", "EmbedExpiry" : "60", "Directory" : "3"}`)
 

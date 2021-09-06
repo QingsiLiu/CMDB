@@ -10,11 +10,11 @@ type Task struct {
 	Name         string     `orm:"size(64)"`
 	StartTime    *time.Time `orm:"column(start_time)"`
 	CompleteTime *time.Time `orm:"column(complete_time);null"`
-	DeadlineTime *time.Time `orm:"column(deadline_time)"`
+	DeadlineTime *time.Time `orm:"column(deadline_time);null"`
 	Status       int        `orm:""`
 	Content      string     `orm:"null"`
 	User         int        `orm:""`
-	DeletedAt    *time.Time `orm:"column(delete_time);null"`
+	DeletedAt    *time.Time `orm:"column(deleted_time);null"`
 }
 
 func init() {

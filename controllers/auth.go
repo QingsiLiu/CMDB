@@ -3,6 +3,7 @@ package controllers
 import (
 	"fmt"
 	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/validation"
 	"magego/course-33/cmdb/base/controllers/base"
 	"magego/course-33/cmdb/base/errors"
 	"magego/course-33/cmdb/config"
@@ -14,6 +15,38 @@ import (
 // AuthController 负责认证的认证控制器
 type AuthController struct {
 	base.BaseController
+}
+
+// Register 注册用户
+func (a *AuthController) Register() {
+	registerForm := &forms.RegisterForm{}
+	errs := errors.NewErrors()
+	text := ""
+
+	if a.Ctx.Input.IsPost() {
+		fmt.Println(1111111)
+		if err := a.ParseForm(registerForm); err == nil {
+			valid := &validation.Validation{}
+			if success, err := valid.Valid(registerForm); err != nil {
+				fmt.Println(1)
+				errs.AddError("default", err.Error())
+			} else if !success {
+				fmt.Println(2)
+				errs.AddValidation(valid)
+			} else {
+				fmt.Println(3)
+				services.UserService.Register(registerForm)
+				text = "用户注册成功"
+				a.Redirect(beego.URLFor("AuthController.Logout"), http.StatusFound)
+			}
+		}
+	}
+
+	a.TplName = "auth/register.html"
+	a.Data["form"] = registerForm
+	a.Data["text"] = text
+	a.Data["errors"] = errs
+	a.Data["xsrf_token"] = a.XSRFToken()
 }
 
 // Login 认证登录
@@ -34,7 +67,6 @@ func (a *AuthController) Login() {
 	//Post请求记性数据验证（成功/失败）
 	if a.Ctx.Input.IsPost() {
 		config.Cache.Incr("login")
-		fmt.Println(config.Cache.Get("login"))
 		//获取用户提交数据
 		if err := a.ParseForm(form); err == nil {
 			user := services.UserService.GetByName(form.Name)

@@ -13,7 +13,7 @@ type PasswordModifyForm struct {
 	Password2   string       `form:"password2"`
 }
 
-// Valid
+// Valid 密码的验证
 func (p *PasswordModifyForm) Valid(validation *validation.Validation) {
 	if ok := p.User.ValidPassWord(p.OldPassword); !ok {
 		validation.AddError("default.default", "旧密码错误")

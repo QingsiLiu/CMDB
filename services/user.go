@@ -31,6 +31,17 @@ func (u *userService) GetByID(id int) *models.User {
 	return nil
 }
 
+func (u *userService) Register(form *forms.RegisterForm) {
+	user := &models.User{
+		Name:     form.Name,
+		Password: utils.GeneratePassword(form.Password),
+		Gender:   3,
+		Status:   4,
+	}
+	ormer := orm.NewOrm()
+	ormer.Insert(user)
+}
+
 // New 新建用户信息
 func (u *userService) New(form *forms.UserModifyForm) {
 	user := &models.User{StaffID: form.StaffId,
