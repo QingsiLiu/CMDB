@@ -1,0 +1,16 @@
+[Unit]
+Description=AlertManager
+Documentation=
+After=network.target
+
+[Service]
+WorkingDirectory=/opt/alertmansger/
+ExecStart=/opt/alertmansger/alertmansger
+ExecStop=/bin/kill -KILL $MAINPID
+Type=simple
+KillMode=control-group
+Restart=on-failure
+RestartSec=3s
+
+[Install]
+WantedBy=multi-user.targetalertmanager.service
