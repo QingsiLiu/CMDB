@@ -172,3 +172,6 @@ Authorization => session => user => role => actions
     在 actions => 有权限
     不在 => 无权限
 
+
+
+sudo rm -rf 文件
