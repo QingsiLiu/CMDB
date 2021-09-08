@@ -1,11 +1,11 @@
 [Unit]
-Description=AlertManager
+Description=Node Exporter
 Documentation=
 After=network.target
 
 [Service]
-WorkingDirectory=/opt/alertmansger/
-ExecStart=/opt/alertmansger/alertmansger
+WorkingDirectory=/opt/node_exporter/
+ExecStart=/opt/node_exporter/node_exporter --web.config=/opt/node_exporter/web.config.yaml
 ExecStop=/bin/kill -KILL $MAINPID
 Type=simple
 KillMode=control-group
