@@ -1,0 +1,6 @@
+groups:
+  - name: targetdown
+    rules:
+      - alert: target is down
+        expr: up == 0
+        for: 1m

@@ -4,8 +4,9 @@ Documentation=
 After=network.target
 
 [Service]
-WorkingDirectory=/opt/alertmansger/
-ExecStart=/opt/alertmansger/alertmansger
+WorkingDirectory=/opt/alertmanager/
+ExecStart=/opt/alertmanager/alertmanager
+ExecReload=/bin/kill -KILL $MAINPID
 ExecStop=/bin/kill -KILL $MAINPID
 Type=simple
 KillMode=control-group
