@@ -1,4 +1,7 @@
 global:
+  query_log_file: "prometheus.log"
+  external_labels:
+    env: test
   scrape_interval: 15s
   evaluation_interval: 15s
 
@@ -19,6 +22,12 @@ scrape_configs:
     basic_auth:
       username: "lhq"
       password: "123456"
-    static_configs:
-      - targets:
-          - "localhost:9100"
+    file_sd_configs:
+      - files:
+        - sd/file/node/*.yaml
+        - sd/file/node/*.json
+
+      #v1:
+      #static_configs:
+      #- targets:
+          #- "localhost:9100"
