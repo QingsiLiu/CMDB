@@ -6,7 +6,6 @@ import (
 	"magego/course-33/cmdb/models"
 	"magego/course-33/cmdb/services"
 	"net/http"
-	"strings"
 )
 
 // AuthorizationController 所有需要认证访问基础控制器
@@ -15,18 +14,12 @@ type AuthorizationController struct {
 	LoginUser *models.User
 }
 
-func (a *AuthorizationController) getNav() string {
-	controllerName, _ := a.GetControllerAndAction()
-	return strings.ToLower(strings.TrimSuffix(controllerName, "Controller"))
-}
-
 // Prepare 用户认证检查
 func (a *AuthorizationController) Prepare() {
 	//配置文件读取
 	SessionKey := beego.AppConfig.DefaultString("auth::SessionKey", "user")
 	SessionUser := a.GetSession(SessionKey)
 	a.Data["loginUser"] = nil
-	a.Data["nav"] = a.getNav()
 
 	if SessionUser != nil {
 		if id, ok := SessionUser.(int); ok {

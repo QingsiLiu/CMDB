@@ -1,0 +1,42 @@
+<div class="offset-3 mt-2">
+    <form action="{{ urlfor `JobController.Modify` }}" method="post">
+        <input type="hidden" name="_xsrf" value="{{ .xsrf_token}}" />
+        <input type="hidden" name="ID" value="{{ .form.ID }}" />
+
+        <div class="form-group row">
+            <label class="col-form-label col-1">节点</label>
+            <div class="col-6">
+                <select name="Node" class="form-control">
+                    {{ range .nodes }}
+                    <option value="{{ .ID }}">{{ .HostName }}</option>
+                    {{ else }}
+                    <option value="0">暂无节点可用</option>
+                    {{ end }}
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-form-label col-1">Key</label>
+            <div class="col-6">
+                <input type="text" class="form-control" value="{{ .form.Key }}" name="Key" />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-form-label col-1">备注</label>
+            <div class="col-6">
+                <textarea class="form-control" placeholder="请输入备注内容" id="textarea1" name="Remark" rows="10"></textarea>
+            </div>
+            <script>
+                document.getElementById("textarea1").value = "{{ .form.Remark }}"
+            </script>
+        </div>
+
+        <div class="form-group">
+            <div class="col-6 offset-2">
+                <input type="submit" class="btn btn-info" value="提交" />
+            </div>
+        </div>
+    </form>
+</div>

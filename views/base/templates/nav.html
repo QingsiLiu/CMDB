@@ -10,12 +10,26 @@
                 <li class="nav-item {{ if eq .nav `home` }} active {{ end }}">
                     <a class="nav-link" href="{{ urlfor `HomeController.Index` }}" aria-current="page">首页</a>
                 </li>
+
                 <li class="nav-item {{ if eq .nav `user` }} active {{ end }}">
                     <a class="nav-link" href="{{ urlfor `UserController.Query` }}">用户管理</a>
                 </li>
+
                 <li class="nav-item {{ if eq .nav `task` }} active {{ end }}">
                     <a class="nav-link" href="{{ urlfor `TaskController.Query` }}">任务管理</a>
                 </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle {{ if eq .nav `prometheus` }}active{{ end }}`" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Prometheus
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item {{ if eq .subnav `node` }}active{{ end }}" href="{{ urlfor `NodeController.Query` }}">节点</a>
+                        <a class="dropdown-item {{ if eq .subnav `job` }}active{{ end }}" href="{{ urlfor `JobController.Query` }}">任务</a>
+                        <a class="dropdown-item {{ if eq .subnav `target` }}active{{ end }}" href="{{ urlfor `TargetController.Query` }}">目标</a>
+                    </div>
+                </li>
+
             </ul>
         </div>
             <span class="navbar-text">

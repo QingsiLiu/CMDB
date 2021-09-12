@@ -172,6 +172,63 @@ Authorization => session => user => role => actions
     在 actions => 有权限
     不在 => 无权限
 
-
-
 sudo rm -rf 文件
+
+Prometheus
+    Node => 查询 删除
+    Agent   => API register => 不存在 天剑
+                             存在 更新
+            => 属性
+                uuid
+                hostname
+                addr https://host:port/
+                #username
+                #password
+                created_at
+                updated_at
+                deleted_at
+
+    Job => 增删改查
+        => 属性
+                任务标识 [a-zA-Z][0-9a-zA-Z_]
+                备注
+                Node node_id
+                created_at
+                updated_at
+                deleted_at
+
+    Target => 增删改查
+                名称
+                备注
+                Addr
+                Job
+                created_at
+                updated_at
+                deleted_at
+
+数据库关系
+用户 <=> 密码
+user：id name
+password：id user_id password
+
+api => json 
+
+controller => json
+beego:
+    CopyRequestBody=true
+    c.Input.RequestBody json => json.Unmarshal => Form `json`
+
+beego:xsrf检查 => 关闭xsrf检查
+    认证： 登录 => set-cookie: sessionid, cookie: sessionid
+            Token: 固定的随机字符串 V
+                    JWT Token（认证）
+                    id key => id params(timestamp) 签名Token
+
+            header: Authrozation: Token xxx
+                                  Bearer xxx
+
+
+
+Agent:
+    1.注册
+    2.获取配置 => 生成Prometheus配置
