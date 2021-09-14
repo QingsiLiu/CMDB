@@ -11,13 +11,6 @@
         </div>
 
         <div class="form-group row">
-            <label class="col-form-label col-1" {{ if ne .loginUser.ID .form.ID }} hidden {{ end }}>密码</label>
-            <div class="col-4">
-                <input type="text" {{ if ne .loginUser.ID .form.ID }} hidden {{ end }} class="form-control" value="" name="password" />
-            </div>
-        </div>
-
-        <div class="form-group row">
             <label class="col-form-label col-1">工号</label>
             <div class="col-6">
                 <input type="text" class="form-control" value="{{ .form.StaffId }}" name="staffId" />
