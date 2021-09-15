@@ -43,3 +43,7 @@ func (c *PrometheusController) Config() {
 
 	c.Data["json"] = response.NewJSONResponse(200, "ok", rt)
 }
+
+func (c *PrometheusController) Alert() {
+	fmt.Println(string(c.Ctx.Input.RequestBody))
+}

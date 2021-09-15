@@ -19,6 +19,7 @@ func (c *APIController) Prepare() {
 
 	if token != headerToken {
 		c.Data["json"] = response.Unauthorization
+		c.ServeJSON()
 	}
 }
 

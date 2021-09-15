@@ -2,11 +2,18 @@ package routers
 
 import (
 	"github.com/astaxie/beego"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"magego/course-33/cmdb/controllers"
 	v1 "magego/course-33/cmdb/controllers/api/v1"
+	"magego/course-33/cmdb/filters"
 )
 
 func init() {
+	beego.InsertFilter("/*", beego.BeforeExec, filters.BeforeExecute)
+	beego.InsertFilter("/*", beego.AfterExec, filters.AfterExecute, false)
+
+	beego.Handler("/metrics", promhttp.Handler())
+
 	beego.AutoRouter(&controllers.AuthController{})
 	beego.AutoRouter(&controllers.HomeController{})
 	beego.AutoRouter(&controllers.UserController{})
