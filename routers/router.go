@@ -24,6 +24,7 @@ func init() {
 	beego.AutoRouter(&controllers.NodeController{})
 	beego.AutoRouter(&controllers.JobController{})
 	beego.AutoRouter(&controllers.TargetController{})
+	beego.AutoRouter(&controllers.AlertController{})
 
 	// /v1/
 	v1Prom := beego.NewNamespace("/v1", beego.NSAutoRouter(&v1.PrometheusController{}))

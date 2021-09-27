@@ -1,10 +1,11 @@
 package filters
 
 import (
-	"github.com/astaxie/beego/context"
-	"github.com/prometheus/client_golang/prometheus"
 	"strconv"
 	"time"
+
+	"github.com/astaxie/beego/context"
+	"github.com/prometheus/client_golang/prometheus"
 )
 
 var (
@@ -14,9 +15,9 @@ var (
 	})
 
 	statusCode = prometheus.NewCounterVec(prometheus.CounterOpts{
-		Name: "cmdb_request_status_code",
-		Help: "cmdb request status code",
-	}, []string{})
+		Name: "cmdb_request_status_code_total",
+		Help: "CMDB Request Status Code Total",
+	}, []string{"status"})
 
 	elapsedTime = prometheus.NewHistogramVec(prometheus.HistogramOpts{
 		Name:    "cmdb_request_elapsed_time",
@@ -31,13 +32,11 @@ func init() {
 
 func BeforeExecute(ctx *context.Context) {
 	requestTotal.Inc()
-
 	ctx.Input.SetData("stime", time.Now())
 }
 
 func AfterExecute(ctx *context.Context) {
 	statusCode.WithLabelValues(strconv.Itoa(ctx.ResponseWriter.Status)).Inc()
-
 	stimeValue := ctx.Input.GetData("stime")
 	if stimeValue != nil {
 		if stime, ok := stimeValue.(time.Time); ok {

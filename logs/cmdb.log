@@ -702,3 +702,134 @@
 2021/09/12 21:58:59.259 [I] [asm_amd64.s:1374]  https server Running on https://:443
 2021/09/12 21:59:05.588 [server.go:3093]  [HTTP] http: TLS handshake error from [::1]:57206: EOF
 2021/09/12 21:59:05.594 [D] [server.go:2843]  |            ::1|[42m 200 [0m|     3.0004ms|   match|[44m GET     [0m /v1/prometheus/config   r:/v1/prometheus/config/*
+2021/09/26 15:34:40.742 [I] [asm_amd64.s:1371]  https server Running on https://:443
+2021/09/26 15:36:11.089 [server.go:3137]  [HTTP] http: TLS handshake error from [::1]:13941: remote error: tls: unknown certificate
+2021/09/26 15:36:13.332 [server.go:3137]  [HTTP] http: TLS handshake error from [::1]:1598: remote error: tls: unknown certificate
+2021/09/26 15:36:13.339 [server.go:3137]  [HTTP] http: TLS handshake error from [::1]:10601: remote error: tls: unknown certificate
+2021/09/26 15:36:13.397 [C] [panic.go:965]  the request url is  /node/query
+2021/09/26 15:36:13.398 [C] [panic.go:965]  Handler crashed with error inconsistent label cardinality: expected 0 label values but got 1 in []string{"302"}
+2021/09/26 15:36:13.398 [C] [panic.go:965]  D:/GO/src/runtime/panic.go:965
+2021/09/26 15:36:13.398 [C] [panic.go:965]  D:/GoWorkSpace/pkg/mod/github.com/prometheus/client_golang@v1.7.0/prometheus/counter.go:248
+2021/09/26 15:36:13.399 [C] [panic.go:965]  D:/GoWorkSpace/src/magego/course-33/CMDB/filters/filter.go:39
+2021/09/26 15:36:13.400 [C] [panic.go:965]  D:/GoWorkSpace/pkg/mod/github.com/astaxie/beego@v1.12.3/router.go:678
+2021/09/26 15:36:13.401 [C] [panic.go:965]  D:/GoWorkSpace/pkg/mod/github.com/astaxie/beego@v1.12.3/router.go:921
+2021/09/26 15:36:13.401 [C] [panic.go:965]  D:/GO/src/net/http/server.go:2887
+2021/09/26 15:36:13.403 [C] [panic.go:965]  D:/GO/src/net/http/server.go:3459
+2021/09/26 15:36:13.403 [C] [panic.go:965]  D:/GO/src/net/http/h2_bundle.go:5723
+2021/09/26 15:36:13.404 [C] [panic.go:965]  D:/GO/src/runtime/asm_amd64.s:1371
+2021/09/26 15:36:13.513 [C] [panic.go:965]  the request url is  /auth/login
+2021/09/26 15:36:13.514 [C] [panic.go:965]  Handler crashed with error inconsistent label cardinality: expected 0 label values but got 1 in []string{"0"}
+2021/09/26 15:36:13.515 [C] [panic.go:965]  D:/GO/src/runtime/panic.go:965
+2021/09/26 15:36:13.516 [C] [panic.go:965]  D:/GoWorkSpace/pkg/mod/github.com/prometheus/client_golang@v1.7.0/prometheus/counter.go:248
+2021/09/26 15:36:13.517 [C] [panic.go:965]  D:/GoWorkSpace/src/magego/course-33/CMDB/filters/filter.go:39
+2021/09/26 15:36:13.518 [C] [panic.go:965]  D:/GoWorkSpace/pkg/mod/github.com/astaxie/beego@v1.12.3/router.go:678
+2021/09/26 15:36:13.524 [C] [panic.go:965]  D:/GoWorkSpace/pkg/mod/github.com/astaxie/beego@v1.12.3/router.go:921
+2021/09/26 15:36:13.526 [C] [panic.go:965]  D:/GO/src/net/http/server.go:2887
+2021/09/26 15:36:13.527 [C] [panic.go:965]  D:/GO/src/net/http/server.go:3459
+2021/09/26 15:36:13.528 [C] [panic.go:965]  D:/GO/src/net/http/h2_bundle.go:5723
+2021/09/26 15:36:13.530 [C] [panic.go:965]  D:/GO/src/runtime/asm_amd64.s:1371
+2021/09/26 15:36:13.737 [D] [server.go:2887]  |            ::1|[42m 200 [0m|    18.8188ms|   match|[44m GET     [0m /static/css/login.css
+2021/09/26 15:36:13.742 [D] [server.go:2887]  |            ::1|[42m 200 [0m|    24.5803ms|   match|[44m GET     [0m /static/component/bootstrap-4.6.0/css/bootstrap.min.css
+2021/09/26 15:36:14.163 [D] [server.go:2887]  |            ::1|[43m 404 [0m|    28.4759ms| nomatch|[44m GET     [0m /favicon.ico
+2021/09/26 15:36:26.038 [I] [auth.go:78]  用户认证成功：lhq 
+2021/09/26 15:36:26.044 [C] [panic.go:965]  the request url is  /auth/login
+2021/09/26 15:36:26.044 [C] [panic.go:965]  Handler crashed with error inconsistent label cardinality: expected 0 label values but got 1 in []string{"302"}
+2021/09/26 15:36:26.045 [C] [panic.go:965]  D:/GO/src/runtime/panic.go:965
+2021/09/26 15:36:26.045 [C] [panic.go:965]  D:/GoWorkSpace/pkg/mod/github.com/prometheus/client_golang@v1.7.0/prometheus/counter.go:248
+2021/09/26 15:36:26.045 [C] [panic.go:965]  D:/GoWorkSpace/src/magego/course-33/CMDB/filters/filter.go:39
+2021/09/26 15:36:26.046 [C] [panic.go:965]  D:/GoWorkSpace/pkg/mod/github.com/astaxie/beego@v1.12.3/router.go:678
+2021/09/26 15:36:26.046 [C] [panic.go:965]  D:/GoWorkSpace/pkg/mod/github.com/astaxie/beego@v1.12.3/router.go:921
+2021/09/26 15:36:26.046 [C] [panic.go:965]  D:/GO/src/net/http/server.go:2887
+2021/09/26 15:36:26.047 [C] [panic.go:965]  D:/GO/src/net/http/server.go:3459
+2021/09/26 15:36:26.047 [C] [panic.go:965]  D:/GO/src/net/http/h2_bundle.go:5723
+2021/09/26 15:36:26.050 [C] [panic.go:965]  D:/GO/src/runtime/asm_amd64.s:1371
+2021/09/26 15:36:26.101 [C] [panic.go:965]  the request url is  /user/query
+2021/09/26 15:36:26.102 [C] [panic.go:965]  Handler crashed with error inconsistent label cardinality: expected 0 label values but got 1 in []string{"0"}
+2021/09/26 15:36:26.103 [C] [panic.go:965]  D:/GO/src/runtime/panic.go:965
+2021/09/26 15:36:26.113 [C] [panic.go:965]  D:/GoWorkSpace/pkg/mod/github.com/prometheus/client_golang@v1.7.0/prometheus/counter.go:248
+2021/09/26 15:36:26.113 [C] [panic.go:965]  D:/GoWorkSpace/src/magego/course-33/CMDB/filters/filter.go:39
+2021/09/26 15:36:26.113 [C] [panic.go:965]  D:/GoWorkSpace/pkg/mod/github.com/astaxie/beego@v1.12.3/router.go:678
+2021/09/26 15:36:26.114 [C] [panic.go:965]  D:/GoWorkSpace/pkg/mod/github.com/astaxie/beego@v1.12.3/router.go:921
+2021/09/26 15:36:26.114 [C] [panic.go:965]  D:/GO/src/net/http/server.go:2887
+2021/09/26 15:36:26.114 [C] [panic.go:965]  D:/GO/src/net/http/server.go:3459
+2021/09/26 15:36:26.115 [C] [panic.go:965]  D:/GO/src/net/http/h2_bundle.go:5723
+2021/09/26 15:36:26.115 [C] [panic.go:965]  D:/GO/src/runtime/asm_amd64.s:1371
+2021/09/26 15:36:26.165 [D] [server.go:2887]  |            ::1|[42m 200 [0m|    10.0875ms|   match|[44m GET     [0m /static/css/layout.css
+2021/09/26 15:36:26.168 [D] [server.go:2887]  |            ::1|[42m 200 [0m|    12.2023ms|   match|[44m GET     [0m /static/component/jquery/jquery-3.5.1.slim.min.js
+2021/09/26 15:36:26.187 [D] [server.go:2887]  |            ::1|[42m 200 [0m|    25.9212ms|   match|[44m GET     [0m /static/component/bootstrap-4.6.0/js/bootstrap.bundle.min.js
+2021/09/26 15:36:28.499 [C] [panic.go:965]  the request url is  /node/query
+2021/09/26 15:36:28.501 [C] [panic.go:965]  Handler crashed with error inconsistent label cardinality: expected 0 label values but got 1 in []string{"0"}
+2021/09/26 15:36:28.502 [C] [panic.go:965]  D:/GO/src/runtime/panic.go:965
+2021/09/26 15:36:28.513 [C] [panic.go:965]  D:/GoWorkSpace/pkg/mod/github.com/prometheus/client_golang@v1.7.0/prometheus/counter.go:248
+2021/09/26 15:36:28.513 [C] [panic.go:965]  D:/GoWorkSpace/src/magego/course-33/CMDB/filters/filter.go:39
+2021/09/26 15:36:28.514 [C] [panic.go:965]  D:/GoWorkSpace/pkg/mod/github.com/astaxie/beego@v1.12.3/router.go:678
+2021/09/26 15:36:28.515 [C] [panic.go:965]  D:/GoWorkSpace/pkg/mod/github.com/astaxie/beego@v1.12.3/router.go:921
+2021/09/26 15:36:28.515 [C] [panic.go:965]  D:/GO/src/net/http/server.go:2887
+2021/09/26 15:36:28.515 [C] [panic.go:965]  D:/GO/src/net/http/server.go:3459
+2021/09/26 15:36:28.516 [C] [panic.go:965]  D:/GO/src/net/http/h2_bundle.go:5723
+2021/09/26 15:36:28.516 [C] [panic.go:965]  D:/GO/src/runtime/asm_amd64.s:1371
+2021/09/26 15:36:29.922 [C] [panic.go:965]  the request url is  /job/query
+2021/09/26 15:36:29.923 [C] [panic.go:965]  Handler crashed with error inconsistent label cardinality: expected 0 label values but got 1 in []string{"0"}
+2021/09/26 15:36:29.923 [C] [panic.go:965]  D:/GO/src/runtime/panic.go:965
+2021/09/26 15:36:29.926 [C] [panic.go:965]  D:/GoWorkSpace/pkg/mod/github.com/prometheus/client_golang@v1.7.0/prometheus/counter.go:248
+2021/09/26 15:36:29.928 [C] [panic.go:965]  D:/GoWorkSpace/src/magego/course-33/CMDB/filters/filter.go:39
+2021/09/26 15:36:29.928 [C] [panic.go:965]  D:/GoWorkSpace/pkg/mod/github.com/astaxie/beego@v1.12.3/router.go:678
+2021/09/26 15:36:29.929 [C] [panic.go:965]  D:/GoWorkSpace/pkg/mod/github.com/astaxie/beego@v1.12.3/router.go:921
+2021/09/26 15:36:29.929 [C] [panic.go:965]  D:/GO/src/net/http/server.go:2887
+2021/09/26 15:36:29.930 [C] [panic.go:965]  D:/GO/src/net/http/server.go:3459
+2021/09/26 15:36:29.934 [C] [panic.go:965]  D:/GO/src/net/http/h2_bundle.go:5723
+2021/09/26 15:36:29.935 [C] [panic.go:965]  D:/GO/src/runtime/asm_amd64.s:1371
+2021/09/26 15:36:30.993 [C] [panic.go:965]  the request url is  /target/query
+2021/09/26 15:36:30.994 [C] [panic.go:965]  Handler crashed with error inconsistent label cardinality: expected 0 label values but got 1 in []string{"0"}
+2021/09/26 15:36:30.994 [C] [panic.go:965]  D:/GO/src/runtime/panic.go:965
+2021/09/26 15:36:30.995 [C] [panic.go:965]  D:/GoWorkSpace/pkg/mod/github.com/prometheus/client_golang@v1.7.0/prometheus/counter.go:248
+2021/09/26 15:36:30.995 [C] [panic.go:965]  D:/GoWorkSpace/src/magego/course-33/CMDB/filters/filter.go:39
+2021/09/26 15:36:30.995 [C] [panic.go:965]  D:/GoWorkSpace/pkg/mod/github.com/astaxie/beego@v1.12.3/router.go:678
+2021/09/26 15:36:30.996 [C] [panic.go:965]  D:/GoWorkSpace/pkg/mod/github.com/astaxie/beego@v1.12.3/router.go:921
+2021/09/26 15:36:30.996 [C] [panic.go:965]  D:/GO/src/net/http/server.go:2887
+2021/09/26 15:36:30.997 [C] [panic.go:965]  D:/GO/src/net/http/server.go:3459
+2021/09/26 15:36:30.997 [C] [panic.go:965]  D:/GO/src/net/http/h2_bundle.go:5723
+2021/09/26 15:36:30.998 [C] [panic.go:965]  D:/GO/src/runtime/asm_amd64.s:1371
+2021/09/26 15:36:32.037 [C] [panic.go:965]  the request url is  /node/query
+2021/09/26 15:36:32.038 [C] [panic.go:965]  Handler crashed with error inconsistent label cardinality: expected 0 label values but got 1 in []string{"0"}
+2021/09/26 15:36:32.039 [C] [panic.go:965]  D:/GO/src/runtime/panic.go:965
+2021/09/26 15:36:32.039 [C] [panic.go:965]  D:/GoWorkSpace/pkg/mod/github.com/prometheus/client_golang@v1.7.0/prometheus/counter.go:248
+2021/09/26 15:36:32.051 [C] [panic.go:965]  D:/GoWorkSpace/src/magego/course-33/CMDB/filters/filter.go:39
+2021/09/26 15:36:32.053 [C] [panic.go:965]  D:/GoWorkSpace/pkg/mod/github.com/astaxie/beego@v1.12.3/router.go:678
+2021/09/26 15:36:32.053 [C] [panic.go:965]  D:/GoWorkSpace/pkg/mod/github.com/astaxie/beego@v1.12.3/router.go:921
+2021/09/26 15:36:32.054 [C] [panic.go:965]  D:/GO/src/net/http/server.go:2887
+2021/09/26 15:36:32.054 [C] [panic.go:965]  D:/GO/src/net/http/server.go:3459
+2021/09/26 15:36:32.055 [C] [panic.go:965]  D:/GO/src/net/http/h2_bundle.go:5723
+2021/09/26 15:36:32.056 [C] [panic.go:965]  D:/GO/src/runtime/asm_amd64.s:1371
+2021/09/26 15:43:53.986 [I] [asm_amd64.s:1371]  https server Running on https://:443
+2021/09/26 15:43:59.710 [server.go:3137]  [HTTP] http: TLS handshake error from [::1]:7969: remote error: tls: unknown certificate
+2021/09/26 15:43:59.716 [server.go:3137]  [HTTP] http: TLS handshake error from [::1]:14276: remote error: tls: unknown certificate
+2021/09/26 15:43:59.824 [C] [panic.go:965]  the request url is  /node/query
+2021/09/26 15:43:59.824 [C] [panic.go:965]  Handler crashed with error inconsistent label cardinality: expected 0 label values but got 1 in []string{"0"}
+2021/09/26 15:43:59.825 [C] [panic.go:965]  D:/GO/src/runtime/panic.go:965
+2021/09/26 15:43:59.826 [C] [panic.go:965]  D:/GoWorkSpace/pkg/mod/github.com/prometheus/client_golang@v1.7.0/prometheus/counter.go:248
+2021/09/26 15:43:59.826 [C] [panic.go:965]  D:/GoWorkSpace/src/magego/course-33/CMDB/filters/filter.go:39
+2021/09/26 15:43:59.827 [C] [panic.go:965]  D:/GoWorkSpace/pkg/mod/github.com/astaxie/beego@v1.12.3/router.go:678
+2021/09/26 15:43:59.828 [C] [panic.go:965]  D:/GoWorkSpace/pkg/mod/github.com/astaxie/beego@v1.12.3/router.go:921
+2021/09/26 15:43:59.828 [C] [panic.go:965]  D:/GO/src/net/http/server.go:2887
+2021/09/26 15:43:59.830 [C] [panic.go:965]  D:/GO/src/net/http/server.go:3459
+2021/09/26 15:43:59.830 [C] [panic.go:965]  D:/GO/src/net/http/h2_bundle.go:5723
+2021/09/26 15:43:59.831 [C] [panic.go:965]  D:/GO/src/runtime/asm_amd64.s:1371
+2021/09/26 15:46:55.561 [I] [asm_amd64.s:1371]  https server Running on https://:443
+2021/09/26 15:47:08.836 [server.go:3137]  [HTTP] http: TLS handshake error from [::1]:6068: remote error: tls: unknown certificate
+2021/09/26 15:47:08.840 [server.go:3137]  [HTTP] http: TLS handshake error from [::1]:11461: remote error: tls: unknown certificate
+2021/09/26 15:47:08.862 [D] [server.go:2887]  |            ::1|[42m 200 [0m|    18.5394ms|   match|[44m GET     [0m /node/query   r:/node/query/*
+2021/09/26 15:47:08.896 [D] [server.go:2887]  |            ::1|[42m 200 [0m|     3.8524ms|   match|[44m GET     [0m /static/css/layout.css
+2021/09/26 15:47:08.904 [D] [server.go:2887]  |            ::1|[42m 200 [0m|    11.6615ms|   match|[44m GET     [0m /static/component/bootstrap-4.6.0/css/bootstrap.min.css
+2021/09/26 15:47:12.189 [D] [server.go:2887]  |            ::1|[42m 200 [0m|    37.2463ms|   match|[44m GET     [0m /alert/query   r:/alert/query/*
+2021/09/26 15:47:19.164 [D] [server.go:2887]  |            ::1|[42m 200 [0m|    15.5389ms|   match|[44m GET     [0m /job/query   r:/job/query/*
+2021/09/26 15:48:34.812 [D] [server.go:2887]  |            ::1|[42m 200 [0m|    40.4168ms|   match|[44m GET     [0m /node/query   r:/node/query/*
+2021/09/26 15:48:34.867 [D] [server.go:2887]  |            ::1|[47m 304 [0m|      7.315ms|   match|[44m GET     [0m /static/component/jquery/jquery-3.5.1.slim.min.js
+2021/09/26 15:48:34.874 [D] [server.go:2887]  |            ::1|[47m 304 [0m|     11.218ms|   match|[44m GET     [0m /static/component/bootstrap-4.6.0/js/bootstrap.bundle.min.js
+2021/09/26 15:48:36.331 [D] [server.go:2887]  |            ::1|[42m 200 [0m|    26.5764ms|   match|[44m GET     [0m /alert/query   r:/alert/query/*
+2021/09/26 15:50:11.157 [D] [server.go:2887]  |            ::1|[42m 200 [0m|    78.6918ms|   match|[44m GET     [0m /alert/query   r:/alert/query/*
+2021/09/26 15:50:29.828 [D] [server.go:2887]  |            ::1|[42m 200 [0m|    41.9361ms|   match|[44m GET     [0m /alert/query   r:/alert/query/*
+2021/09/26 15:50:52.546 [D] [server.go:2887]  |            ::1|[42m 200 [0m|   106.6408ms|   match|[44m GET     [0m /target/query   r:/target/query/*
+2021/09/26 15:50:54.004 [D] [server.go:2887]  |            ::1|[42m 200 [0m|    19.9179ms|   match|[44m GET     [0m /job/query   r:/job/query/*
+2021/09/26 15:50:55.072 [D] [server.go:2887]  |            ::1|[42m 200 [0m|    20.9222ms|   match|[44m GET     [0m /node/query   r:/node/query/*
+2021/09/26 15:50:56.390 [D] [server.go:2887]  |            ::1|[42m 200 [0m|    30.4008ms|   match|[44m GET     [0m /alert/query   r:/alert/query/*

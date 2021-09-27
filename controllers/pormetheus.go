@@ -189,3 +189,20 @@ func (t *TargetController) Query() {
 	t.TplName = "prometheus/target/query.html"
 	t.Data["title"] = "目标列表"
 }
+
+//-------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------
+type AlertController struct {
+	prometheusController
+}
+
+func (c *AlertController) Query() {
+	form := forms.NewAlertQueryParams(c.Input())
+	if err := c.ParseForm(form); err == nil {
+		fmt.Printf("%#v\n", form.PageQueryParams)
+		fmt.Printf("%#v\n", form)
+		c.Data["page"] = services.AlertService.Query(form)
+	}
+	c.Data["form"] = form
+	c.TplName = "prometheus/alert/query.html"
+}

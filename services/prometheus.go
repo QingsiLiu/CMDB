@@ -2,9 +2,11 @@ package services
 
 import (
 	"fmt"
+	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 	"magego/course-33/cmdb/forms"
 	"magego/course-33/cmdb/models"
+	"magego/course-33/cmdb/utils"
 	"time"
 )
 
@@ -211,8 +213,97 @@ func (s *targetService) Query(q string) []*models.Target {
 	return targets
 }
 
+//-------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------
+
+type alertService struct {
+}
+
+func (m *alertService) Alert(form *forms.AlertForm) {
+	ormer := orm.NewOrm()
+	queryset := ormer.QueryTable(&models.Alert{})
+	queryset = queryset.Filter("fingerprint", form.Fingerprint)
+	queryset = queryset.Filter("deleted_at__isnull", true)
+	queryset = queryset.Filter("status", "firing")
+	if form.IsNew() {
+		// 如果有为处理的告警，不在添加
+		if count, err := queryset.Count(); err == nil && count == 0 {
+			// 添加
+			alert := &models.Alert{
+				Fingerprint:  form.Fingerprint,
+				Alertname:    form.AlertName(),
+				Status:       form.Status,
+				StartsAt:     form.StartsAt,
+				GeneratorURL: form.GeneratorURL,
+				Labels:       form.LabelsString(),
+				Annotations:  form.AnnotationsString(),
+			}
+			ormer.Insert(alert)
+		}
+	} else {
+		// 更新
+		queryset.Update(orm.Params{
+			"EndsAt": form.EndsAt,
+			"Status": form.Status,
+		})
+	}
+}
+
+// Query 查询
+func (s *alertService) Query(form *forms.AlertQueryParams) *utils.Page {
+	var alerts []*models.Alert
+	queryset := orm.NewOrm().QueryTable(&models.Alert{})
+	cond := orm.NewCondition()
+	cond = cond.And("deleted_at__isnull", true)
+
+	if form.Q != "" {
+		qcond := orm.NewCondition()
+		qcond = qcond.Or("alertname__icontains", form.Q)
+		cond = cond.AndCond(qcond)
+	}
+
+	if form.Status != "" && form.Status != "all" {
+		qcond := orm.NewCondition()
+		qcond = qcond.Or("status", form.Status)
+		cond = cond.AndCond(qcond)
+	}
+
+	if form.StartTime() != nil {
+		qcond := orm.NewCondition()
+		qcond = qcond.Or("created_at__gte", form.StartTime())
+		cond = cond.AndCond(qcond)
+	}
+
+	if form.EndTime() != nil {
+		qcond := orm.NewCondition()
+		qcond = qcond.Or("created_at__lt", form.EndTime())
+		cond = cond.AndCond(qcond)
+	}
+
+	queryset.SetCond(cond).OrderBy("-created_at").Offset(form.Offset()).Limit(form.PageSize()).All(&alerts)
+	total, _ := queryset.SetCond(cond).Count()
+	// NewPage(alerts, total, form.PageQueryParams)
+	return utils.NewPage(alerts, total, form.PageSize(), form.PageNum(), form.Inputs)
+}
+
+func (s *alertService) Notice(form *forms.AlertGroupForm) {
+	// 告警永远通知个某个，某些人，某个群组 => 通知所有运维人员
+	// 业务发生故障 => 通知业务负责人
+	// 告警分组 => 业务 ==> cmdb 业务 => 负责人 (告警规则)
+	tos := beego.AppConfig.DefaultStrings("notice::mailTos", []string{})
+	subject := form.AlertName()
+
+	phones := beego.AppConfig.DefaultStrings("notice::phones", []string{})
+	templateId := beego.AppConfig.DefaultString("notice::templateId", "")
+	templateParams := []string{form.AlertName(), "账户余额", "CMDB"}
+
+	utils.SendMail(tos, subject, utils.FormatEmailBody("views/email/alert.html", form))
+	utils.SendSms(phones, templateId, templateParams)
+}
+
 var (
 	NodeService   = new(nodeService)
 	JobService    = new(jobService)
 	TargetService = new(targetService)
+	AlertService  = new(alertService)
 )
