@@ -19,7 +19,7 @@ var webCommand = &cobra.Command{
 		if !verbose {
 			beego.BeeLogger.DelLogger("console")
 		}
-		config.Init("file", `{"CachePath" : "tmp/cache", "FileSuffix" : ".cache", "EmbedExpiry" : "60", "Directory" : "3"}`)
+		config.Init("redis", `{"key":"cmdb:cache","conn":"110.42.144.237:6379","dbNum":"0","password":"root"}`)
 
 		orm.Debug = verbose
 		dsn := fmt.Sprintf("%s:%s@tcp(%s:%d)/cmdb?charset=utf8mb4&loc=PRC&parseTime=true",

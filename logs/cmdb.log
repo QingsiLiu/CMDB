@@ -833,3 +833,22 @@
 2021/09/26 15:50:54.004 [D] [server.go:2887]  |            ::1|[42m 200 [0m|    19.9179ms|   match|[44m GET     [0m /job/query   r:/job/query/*
 2021/09/26 15:50:55.072 [D] [server.go:2887]  |            ::1|[42m 200 [0m|    20.9222ms|   match|[44m GET     [0m /node/query   r:/node/query/*
 2021/09/26 15:50:56.390 [D] [server.go:2887]  |            ::1|[42m 200 [0m|    30.4008ms|   match|[44m GET     [0m /alert/query   r:/alert/query/*
+2021/09/28 17:18:39.057 [I] [asm_amd64.s:1371]  https server Running on https://:443
+2021/09/28 17:19:21.861 [server.go:3137]  [HTTP] http: TLS handshake error from [::1]:6094: remote error: tls: unknown certificate
+2021/09/28 17:19:21.862 [server.go:3137]  [HTTP] http: TLS handshake error from [::1]:10992: remote error: tls: unknown certificate
+2021/09/28 17:19:21.910 [D] [server.go:2887]  |            ::1|[47m 302 [0m|    43.1813ms|   match|[44m GET     [0m /     r:/
+2021/09/28 17:19:22.153 [D] [server.go:2887]  |            ::1|[42m 200 [0m|   220.8039ms|   match|[44m GET     [0m /auth/login   r:/auth/login/*
+2021/09/28 17:19:22.236 [D] [server.go:2887]  |            ::1|[42m 200 [0m|     7.2565ms|   match|[44m GET     [0m /static/css/login.css
+2021/09/28 17:19:22.257 [D] [server.go:2887]  |            ::1|[42m 200 [0m|    28.2407ms|   match|[44m GET     [0m /static/component/bootstrap-4.6.0/css/bootstrap.min.css
+2021/09/28 17:19:22.701 [D] [server.go:2887]  |            ::1|[43m 404 [0m|    92.4956ms| nomatch|[44m GET     [0m /favicon.ico
+2021/09/28 17:19:26.715 [I] [auth.go:78]  用户认证成功：lhq 
+2021/09/28 17:19:26.718 [D] [server.go:2887]  |            ::1|[47m 302 [0m|   214.4654ms|   match|[46m POST    [0m /auth/login   r:/auth/login/*
+2021/09/28 17:19:26.834 [D] [server.go:2887]  |            ::1|[42m 200 [0m|    90.8983ms|   match|[44m GET     [0m /user/query   r:/user/query/*
+2021/09/28 17:19:26.885 [D] [server.go:2887]  |            ::1|[42m 200 [0m|     10.814ms|   match|[44m GET     [0m /static/css/layout.css
+2021/09/28 17:19:27.000 [D] [server.go:2887]  |            ::1|[42m 200 [0m|   123.0264ms|   match|[44m GET     [0m /static/component/bootstrap-4.6.0/js/bootstrap.bundle.min.js
+2021/09/28 17:19:27.064 [D] [server.go:2887]  |            ::1|[42m 200 [0m|   186.1925ms|   match|[44m GET     [0m /static/component/jquery/jquery-3.5.1.slim.min.js
+2021/09/28 17:33:06.314 [I] [asm_amd64.s:1371]  https server Running on https://:443
+2021/09/28 17:33:23.489 [server.go:3137]  [HTTP] http: TLS handshake error from [::1]:12675: remote error: tls: unknown certificate
+2021/09/28 17:33:23.497 [server.go:3137]  [HTTP] http: TLS handshake error from [::1]:8610: remote error: tls: unknown certificate
+2021/09/28 17:33:23.585 [D] [server.go:2887]  |            ::1|[42m 200 [0m|     81.885ms|   match|[44m GET     [0m /home/index   r:/home/index/*
+2021/09/28 17:33:23.628 [D] [server.go:2887]  |            ::1|[42m 200 [0m|     5.2544ms|   match|[44m GET     [0m /static/css/layout.css
